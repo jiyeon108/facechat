@@ -1,0 +1,13 @@
+@CHARSET "UTF-8";
+
+td {
+	text-align: center;
+	font-family: 돋움;
+	font-size: 12px;
+}
+.left {
+	text-align: left;
+}
+.right {
+	text-align: right;
+}
