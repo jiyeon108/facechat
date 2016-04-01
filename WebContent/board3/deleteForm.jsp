@@ -16,7 +16,7 @@
 </script>
 </head>
 <body>
-<%
+<% 
 	int num = Integer.parseInt(request.getParameter("num"));
 	String pageNum = request.getParameter("pageNum");
 	BoardDao bd = BoardDao.getInstance();

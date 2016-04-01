@@ -15,7 +15,7 @@
 		Board board = new Board();
 		board.setRef(ref); 
 		board.setRe_level(re_level); 
-		board.setRe_step(re_step);
+		board.setRe_step(re_step); 
 		String ip = request.getRemoteAddr(); // 글쓴이의 주소를 요청
 		board.setIp(ip);
 		board.setSubject(""+i);
