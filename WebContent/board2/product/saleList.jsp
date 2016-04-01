@@ -90,12 +90,5 @@
 } %>
 <br>
 </div>
-<div align="right"> 
-	
-		
-
-	<input type ="button"  value="수정" onclick="location.href='../sale/saleUpdateForm.jsp'">
-	<input type ="button" value="삭제" onclick="location.href='../sale/saleDeleteForm.jsp'">
-</div>		
 </body>
 </html>

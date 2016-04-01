@@ -302,4 +302,35 @@ public class SaleDao {
 	        }
 	        return result;
 	    }
+	    public Sale select(int s_num) throws SQLException{
+			Connection conn=null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = "select * from sale where s_num = ?";
+			Sale sale = new Sale();
+			try{
+				conn  = getConnection();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, s_num);
+				rs    = pstmt.executeQuery();
+				if (rs.next()){
+					
+					sale.setS_num(rs.getInt("s_num"));
+					sale.setS_brand(rs.getString("s_brand"));				
+					sale.setS_salename(rs.getString("s_salename"));
+					sale.setS_store(rs.getString("s_store"));
+					sale.setS_term(rs.getString("s_term"));				
+					sale.setS_image(rs.getString("s_image"));
+					
+					
+				}
+				
+			}catch(Exception e){System.out.println(e.getMessage());
+			}finally {
+				if (rs !=null) rs.close();
+				if (pstmt !=null) pstmt.close();
+				if (conn !=null) conn.close();
+			}
+			return sale;
+		}
 	}

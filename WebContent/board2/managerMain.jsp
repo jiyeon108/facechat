@@ -8,7 +8,7 @@
 <style type="text/css">
 table {
 	padding: 5;
-}
+} 
 </style>
 </head>
 <body>
