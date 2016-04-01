@@ -8,52 +8,50 @@
 <script type="text/javascript" src="../board1/check.js"></script>
 </head>
 <body>
-	<form name="writeform" action="../board1/boWrite.jsp" onsubmit="return check()">
+	<form name="writeform" action="../board1/boWrite.jsp" onsubmit="return check()" 
+		method="post" enctype="multipart/form-data">
 		<table align="center">
 			<caption>
 				<h2>포토리뷰 작성</h2>
 			</caption>
 			<tr>
-				<th>아이디 <input type="text" name="id" required="required">
+				<th>아이디 <input type="text" name="bo_writer" required="required">
 				</th>
 			</tr>
 			<tr>
-				<th>비밀번호 <input type="password" name="password"
-					required="required">
+				<th>비밀번호 <input type="password" name="bo_password" required="required">
 				</th>
 			</tr>
 			<tr>
-				<th>상품명 <input type="text" name="brand" required="required">
+				<th>상품명 <input type="text" name="bo_brand" required="required">
 				</th>
 			</tr>
 			<tr>
-				<th>이미지 <input type="file" name="image" required="required"
-					multiple="multiple">
+				<th>이미지 <input type="file" name="bo_image" required="required" multiple="multiple">
 				</th>
 			</tr>
 			<tr>
-				<th>가격 <input type="text" size="7" name="price"
-					required="required"> 용량 <input type="text" size="7"
-					name="capacity" required="required"> 구매장소 <input
-					type="text" size="7" name="place" required="required">
+				<th>가격 <input type="text" size="7" name="bo_price" required="required"> 
+					용량 <input type="text" size="7" name="bo_capacity" required="required"> 
+					구매장소 <input type="text" size="7" name="bo_place" required="required">
 				</th>
 			</tr>
 			<tr>
 				<th>장점
 					<p>
-						<textarea name="pros" rows="7" cols="45"></textarea>
+						<textarea name="bo_pros" rows="7" cols="45"></textarea>
 				</th>
 			</tr>
 			<tr>
 				<th>단점
 					<p>
-						<textarea name="cons" rows="7" cols="45"></textarea>
+						<textarea name="bo_cons" rows="7" cols="45"></textarea>
 				</th>
 			</tr>
 			<tr>
 				<th>꿀팁
 					<p>
-						<textarea name="tips" rows="5" cols="45"></textarea>
+						<textarea name="bo_reco" rows="5" cols="45"></textarea>
 				</th>
 			</tr>
 			<tr>
