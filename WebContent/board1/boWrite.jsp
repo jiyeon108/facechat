@@ -28,7 +28,6 @@
     }
 
 	Board_1 bo1 = new Board_1();
-	String bo_num = imageUp.getParameter("bo_num");
 	String bo_writer = imageUp.getParameter("bo_writer");
 	String bo_password = imageUp.getParameter("bo_password");
 	String bo_brand = imageUp.getParameter("bo_brand");  
@@ -39,13 +38,11 @@
 	String bo_cons = imageUp.getParameter("bo_cons"); 
 	String bo_reco = imageUp.getParameter("bo_reco");    
 	String bo_grade = imageUp.getParameter("bo_grade"); 
- 	String bo_readcount = imageUp.getParameter("bo_readcount");
-	String bo_likecount = imageUp.getParameter("bo_likecount"); 
-	
-	bo1.setBo_num(Integer.parseInt(bo_num)); 
+
 	bo1.setBo_writer(bo_writer);
 	bo1.setBo_password(bo_password);
 	bo1.setBo_brand(bo_brand);
+	bo1.setBo_price(bo_price);
 	bo1.setBo_capacity(bo_capacity);
 	bo1.setBo_place(bo_place);
 	bo1.setBo_pros(bo_pros);
@@ -53,8 +50,6 @@
 	bo1.setBo_reco(bo_reco);
 	bo1.setBo_imag(filename);
 	bo1.setBo_grade(bo_grade);
- 	bo1.setBo_readcount(Integer.parseInt(bo_readcount));
-	bo1.setBo_likecount(Integer.parseInt(bo_likecount));
 	bo1.setReg_date(new Timestamp(System.currentTimeMillis()));
 	
  	

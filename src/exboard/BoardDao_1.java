@@ -27,7 +27,7 @@ public class BoardDao_1 {
 		ResultSet rs = null;
 		String sql = "insert into board_1 values(?,?,?,?,?,?,?,?,?,?,"
 				+ "?,?,0,0,?)";
-		String sql1 = "select nvl(max(num),0)+1 from board_1";
+		String sql1 = "select nvl(max(bo_num),0)+1 from board_1";
 		try{
 			conn  = getConnection();
 			pstmt = conn.prepareStatement(sql1);
@@ -47,9 +47,7 @@ public class BoardDao_1 {
 			pstmt.setString(10, bo1.getBo_cons());
 			pstmt.setString(11, bo1.getBo_reco());
 			pstmt.setString(12, bo1.getBo_imag());
-			pstmt.setInt(13, bo1.getBo_readcount());
-			pstmt.setInt(14, bo1.getBo_likecount());
-			pstmt.setTimestamp(15, bo1.getReg_date());
+			pstmt.setTimestamp(13, bo1.getReg_date());
 			result = pstmt.executeUpdate();
 			
 			

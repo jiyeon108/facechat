@@ -56,7 +56,7 @@
 			</tr>
 			<tr>
 				<th>별점주기
-					<p>
+					<p><input type="text" name="bo_grade">
 						<!-- <div class="title"></div>
                 <div style="display: inline-block" id="rating" class="raty unpa-review-rating"></div>
                 	<script>
