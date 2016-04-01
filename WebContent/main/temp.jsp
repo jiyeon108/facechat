@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link href="../temp.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../board1/check.js"></script>
 </head>
 <body>
 
