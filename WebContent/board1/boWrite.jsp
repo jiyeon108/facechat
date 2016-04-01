@@ -20,7 +20,7 @@
 	String realFolder = "";//웹 어플리케이션상의 절대 경로
 	String filename ="";
 	MultipartRequest imageUp = null;
-	String saveFolder = "/imageFile";//파일이 업로드되는 폴더를 지정한다.
+	String saveFolder = "images";//파일이 업로드되는 폴더를 지정한다.
 	String encType = "utf-8"; //엔코딩타입
 	int maxSize = 5*1024*1024;  //최대 업로될 파일크기 5Mb
 	ServletContext context = getServletContext();
@@ -71,10 +71,10 @@
 	BoardDao_1 boardProcess = BoardDao_1.getInstance();
 	int result = boardProcess.insert(bo1);
 	if (result > 0) {	
-		response.sendRedirect("board1.jsp");
+		response.sendRedirect("../board1/board1.jsp");
 		
 		
-	} else { %>s
+	} else { %>
 
 		 <script type="text/javascript">
 			alert("데이터 입력중에 에러가 발생했습니다. 메세지 확인하세요");
