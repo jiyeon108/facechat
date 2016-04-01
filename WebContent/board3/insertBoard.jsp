@@ -21,7 +21,7 @@
 		board.setSubject(""+i);
 		board.setWriter(""+i);
 		board.setContent(""+i);
-		board.setPasswd("");
+		board.setPasswd(""); 
 		board.setEmail("");
 		bd.insert(board); 
 	}
