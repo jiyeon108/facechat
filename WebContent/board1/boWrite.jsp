@@ -3,19 +3,10 @@
 <%@ page import="java.sql.*,com.oreilly.servlet.MultipartRequest"%>
 <%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@ page import="java.util.*,java.io.*, java.sql.*"%> 
-<!DOCTYPE ">
-<html>
-<head>
-<%
-	String path = request.getContextPath();
-%>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<% 	request.setCharacterEncoding("utf-8"); 
 
-%>
+<% String path = request.getContextPath(); %>
+
+<% 	request.setCharacterEncoding("utf-8"); %>
 <%
 	String realFolder = "";//웹 어플리케이션상의 절대 경로
 	String filename ="";
@@ -48,10 +39,9 @@
 	String bo_cons = imageUp.getParameter("bo_cons"); 
 	String bo_reco = imageUp.getParameter("bo_reco");    
 	String bo_grade = imageUp.getParameter("bo_grade"); 
-	String bo_readcount = imageUp.getParameter("bo_readcount");
-	String bo_likecount = imageUp.getParameter("bo_likecount");
+ 	String bo_readcount = imageUp.getParameter("bo_readcount");
+	String bo_likecount = imageUp.getParameter("bo_likecount"); 
 	
- 
 	bo1.setBo_num(Integer.parseInt(bo_num)); 
 	bo1.setBo_writer(bo_writer);
 	bo1.setBo_password(bo_password);
@@ -63,7 +53,7 @@
 	bo1.setBo_reco(bo_reco);
 	bo1.setBo_imag(filename);
 	bo1.setBo_grade(bo_grade);
-	bo1.setBo_readcount(Integer.parseInt(bo_readcount));
+ 	bo1.setBo_readcount(Integer.parseInt(bo_readcount));
 	bo1.setBo_likecount(Integer.parseInt(bo_likecount));
 	bo1.setReg_date(new Timestamp(System.currentTimeMillis()));
 	
@@ -76,8 +66,8 @@
 		
 	} else { %>
 
-		 <script type="text/javascript">
-			alert("데이터 입력중에 에러가 발생했습니다. 메세지 확인하세요");
-			location.href ='boWriteForm.jsp';
+		 <script type="text/javascript">			
+		 	alert("데이터 입력중에 에러가 발생했습니다. 메세지 확인하세요");
+			location.href ='../board1/boWriteForm.jsp';
 		</script>
 <%  }  %>
