@@ -184,43 +184,6 @@ public class SaleDao {
 			return total;
 		}
 		
-		/*// 쇼핑몰 메인에 표시하기 위해서 사용하는 분류별 신간책목록을 얻어내는 메소드
-		public Book[] getBooks(String book_kind,int count) {
-	        Connection conn = null;  PreparedStatement pstmt = null;
-	        ResultSet rs = null;
-	        Book bookList[]=null;       int i = 0;        
-	        try { conn = getConnection();           
-	            pstmt = conn.prepareStatement(
-	               "select * from (select * from book where book_kind" +
-	            	" = ? order by reg_date desc) where rownum <= ?");
-	            pstmt.setString(1, book_kind);
-	            pstmt.setInt(2, count);          
-	        	rs = pstmt.executeQuery();
-	            if (rs.next()) {
-	                bookList = new Book[count];
-	                do{  Book book= new Book();
-	                     book.setBook_id(rs.getInt("book_id"));
-	                     book.setBook_kind(rs.getString("book_kind"));
-	                     book.setBook_title(rs.getString("book_title"));
-	                     book.setBook_price(rs.getInt("book_price"));
-	                     book.setBook_count(rs.getInt("book_count"));
-	                     book.setAuthor(rs.getString("author"));
-	                     book.setPublishing_com(rs.getString("publishing_com"));
-	                     book.setPublishing_date(rs.getString("publishing_date"));
-	                     book.setBook_image(rs.getString("book_image"));
-	                     book.setDiscount_rate(rs.getInt("discount_rate"));
-	                     book.setReg_date(rs.getTimestamp("reg_date"));
-	                     bookList[i]=book;
-	                     i++;
-				    }while(rs.next());
-				}
-	        } catch(Exception e) { System.out.println(e.getMessage());  } finally {
-	            if (rs != null) try { rs.close(); } catch(SQLException ex) {}
-	            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
-	            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
-	        }
-			return bookList;
-	    }*/
 		
 		// bookId에 해당하는 책의 정보를 얻어내는 메소드로 ,등록된 책을 수정하기 위해 수정폼으로 읽어들기이기 위한 메소드
 		public Sale getSale(int s_num) {

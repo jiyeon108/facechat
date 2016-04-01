@@ -23,7 +23,7 @@
 
 	<a href="../managerMain.jsp"> 관리자 메인으로</a> &nbsp;
 <div align="right"> 
-		<input type ="button"  value="등록" onclick="location.href='../product/saleInsertForm.jsp'"><p>
+		<input type ="button"  value="등록" onclick="location.href='<%=path%>/board2/product/saleInsertForm.jsp'"><p>
 </div>
 	<table border="1" >
 		<tr height="30">
@@ -55,17 +55,19 @@
 	total = total - startRow +1;
 	List<Sale> list = sd.selectList(startRow, endRow);
 	if(list !=null){
-		for(Sale sal :list){ %>
-			<tr><td><%=sal.getS_num() %></td>
-				<td><%=sal.getS_brand()%></td>
-				<td><%=sal.getS_salename()%></td>
-				<td><%=sal.getS_store()%></td>
-				<td><%=sal.getS_term()%></td>
-				<td><%=sal.getS_image() %></td>
+		for(Sale sale :list){ %>
+			<tr><td><%=total-- %>
+      <a href="/board2/saleList.jsp?s_num=<%=sale.getS_num() %>&pageNum=<%=nowPage%>"></a></td>
+		
+				<td><%=sale.getS_brand()%></td>
+				<td><%=sale.getS_salename()%></td>
+				<td><%=sale.getS_store()%></td>
+				<td><%=sale.getS_term()%></td>
+				<td><%=sale.getS_image() %></td>
 				<td>
-         		<a href="saleUpdateForm.jsp?s_num=<%=sal.getS_num() %>&s_name=<%=sal.getS_brand()%>">수정</a></td>
+         		<a href="saleUpdateForm.jsp?s_num=<%=sale.getS_num() %>&s_name=<%=sale.getS_brand()%>">수정</a></td>
       			<td>
-      		  	 <a href="saleDeleteForm.jsp?s_num=<%=sal.getS_num() %>&s_name=<%=sal.getS_brand()%>">삭제</a></td>
+      		  	 <a href="saleDeleteForm.jsp?s_num=<%=sale.getS_num() %>&s_name=<%=sale.getS_brand()%>">삭제</a></td>
 				
 			</tr>
 
@@ -76,15 +78,15 @@
 <div align="center"> 
 
 <%  for(int i =startPage; i<=endPage; i++){%>	
-	<a href ="../product/salelist.jsp?pageNum=<%=i%>">[<%=i %>]</a>
+	<a href ="<%=path %>/board2/product/salelist.jsp?pageNum=<%=i%>">[<%=i %>]</a>
 <% }
 	if(totalPage > endPage) { %>
-		<a href ="../product/salelist.jsp?pageNum=<%=startPage + pagePerBlock%>">다음</a>
+		<a href ="<%=path %>/board2/product/salelist.jsp?pageNum=<%=startPage + pagePerBlock%>">다음</a>
 
 <% } 
 
 	if(startPage>pagePerBlock) { %>
-		<a href ="../product/salelist.jsp?pageNum=<%=startPage - pagePerBlock%>">이전</a>
+		<a href ="<%=path %>/board2/product/salelist.jsp?pageNum=<%=startPage - pagePerBlock%>">이전</a>
 <% 		
 		
 } %>

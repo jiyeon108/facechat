@@ -74,3 +74,5 @@ create table sale (
 
 create sequence sale_seq start with 1 
 	increment by 1 nocycle nocache;
+
+select * from sale;
