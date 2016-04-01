@@ -8,7 +8,7 @@
 <style type="text/css">
 table {
 	padding: 5;
-} 
+}
 </style>
 </head>
 <body>
@@ -24,7 +24,7 @@ table {
 			<td><a href='product/saleInsertForm.jsp'>상품등록</a></td>
 		</tr>
 		<tr>
-			<td><a href='product/saleList.jsp?s-salename=all'>상품수정/삭제</a></td>
+			<td><a href='product/saleList.jsp?s_salename=all'>상품수정/삭제</a></td>
 		</tr>
 	</table>
 	<br>
