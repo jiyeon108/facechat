@@ -3,15 +3,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<%
+	String path = request.getContextPath();
+%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-
-<p>
-<img alt="" src="http://fimg3.pann.com/new/download.jsp?FileID=32605821" height ="200">
-<p>
-<h2> 리뷰존 </h2>
-
+	<input type="button" value="글쓰기"
+		onclick="location.href='<%=path%>/main/temp.jsp?pgm=/board1/boWriteForm.jsp'">
 </body>
 </html>
