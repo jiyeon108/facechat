@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="exboard.*"%>
     <%@ include file="sessionBr.jsp" %>
+    <%@ include file="loginCheck.jsp" %>
     <%
 	MemberDao2 md = MemberDao2.getInstance();
 	Member2 mem2 = md.select(id);
-%>
+/* 	String subject = request.getParameter("subject");
+	String writer = (String)session.getAttribute("id"); */
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +17,7 @@
 </head>
 <body>
 <% 
+
 	int num = 0, ref=0, re_step=0, re_level=0;
 	String pageNum = request.getParameter("pageNum");
 	if(request.getParameter("num") != null) { //답변
@@ -24,7 +28,8 @@
 		re_step = board.getRe_step();
 		re_level = board.getRe_level();
 	}
-%>
+	
+		%>
 <form action="../board3/write.jsp" method="post">
 <input type = "hidden" name="num" value="<%=num %>">
 <input type = "hidden" name="ref" value="<%=ref %>">
