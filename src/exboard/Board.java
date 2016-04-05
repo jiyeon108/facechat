@@ -19,6 +19,7 @@ public class Board {
    private String del_yn;
    private String image;
    private String id;
+   
    public String getId() {
 	return id; 
 }

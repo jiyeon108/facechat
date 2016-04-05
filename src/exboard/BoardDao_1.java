@@ -1,6 +1,9 @@
 package exboard;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.sql.*;
 import javax.naming.*;
 import exboard.*;
@@ -59,13 +62,13 @@ public class BoardDao_1 {
 		}
 		return result;
 	}
-	public int delete(String bo_writer) throws SQLException {
+	public int delete(int bo_num) throws SQLException {
 		int result = 0; Connection conn = null;
 		PreparedStatement pstmt = null; 
-		String sql="delete from board_1 where bo_writer=?";
+		String sql="delete from board_1 where bo_num=?";
 		try { conn = getConnection();
 			pstmt  = conn.prepareStatement(sql);
-			pstmt.setString(1, bo_writer);
+			pstmt.setInt(1, bo_num);
 			result = pstmt.executeUpdate();
 		}catch(Exception e) {System.out.println(e.getMessage());
 		}finally {			
@@ -74,18 +77,30 @@ public class BoardDao_1 {
 		}
 		return result;
 	}
-	public Board_1 select(String bo_writer) throws SQLException {
+	public Board_1 select(int bo_num) throws SQLException {
 		Connection conn = null;
-		PreparedStatement pstmt = null; ResultSet rs = null;
+		PreparedStatement pstmt = null; 
+		ResultSet rs = null;
 		String sql = "select * from board_1 where bo_writer = ?";
 		Board_1 bo1 = new Board_1();
 		try { conn = getConnection();
 			pstmt  = conn.prepareStatement(sql);
-			pstmt.setString(1, bo_writer);
+			pstmt.setInt(1, bo_num);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
+				bo1.setBo_num(rs.getInt("bo_num"));
 				bo1.setBo_writer(rs.getString("bo_writer"));
 				bo1.setBo_password(rs.getString("bo_password"));
+				bo1.setBo_brand(rs.getString("bo_brand"));
+				bo1.setBo_price(rs.getString("bo_price"));
+				bo1.setBo_capacity(rs.getString("bo_capacity"));
+				bo1.setBo_place(rs.getString("bo_place"));
+				bo1.setBo_grade(rs.getString("bo_grade"));
+				bo1.setBo_pros(rs.getString("bo_pros"));
+				bo1.setBo_cons(rs.getString("bo_cons"));
+				bo1.setBo_reco(rs.getString("bo_reco"));
+				bo1.setBo_imag(rs.getString("bo_imag"));
+				bo1.setReg_date(rs.getTimestamp("Reg_date"));
 
 			} 
 		}catch(Exception e) {System.out.println(e.getMessage());
@@ -96,11 +111,33 @@ public class BoardDao_1 {
 		}
 		return bo1;
 	}
+	public int selectTotal()  {
+		Connection conn = null; 
+		int total = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select count(*) from board_1"; 
+		try{conn  = getConnection();
+			pstmt = conn.prepareStatement(sql);				
+			rs = pstmt.executeQuery();
+			if (rs.next()) {				
+				total = rs.getInt(1);
+			}			
+		}catch(Exception e) { System.out.println(e.getMessage());
+		}finally {
+			try{
+				if (rs !=null) rs.close();
+				if (pstmt !=null) pstmt.close();
+				if (conn !=null) conn.close();
+			}catch(Exception e){}
+		}
+		return total;
+	}
 	public int update(Board_1 bo1) throws SQLException {
 		int result = 0; Connection conn = null;
 		PreparedStatement pstmt = null; 
 		String sql="update Board_1 set bo_writer=?,bo_password=?,bo_brand=?,bo_price=?,bo_capacity=?,"
-			+ "bo_place=?,bo_grade=?,bo_grade,bo_pros=?,bo_cons=?,bo_reco=?,bo_img=? where bo_img=?";
+			+ "bo_place=?,bo_grade=?,bo_pros=?,bo_cons=?,bo_reco=?,bo_img=? where bo_num=?";
 		try { conn = getConnection();
 			pstmt  = conn.prepareStatement(sql);
 			pstmt.setString(1, bo1.getBo_writer());
@@ -123,4 +160,83 @@ public class BoardDao_1 {
 		}
 		return result;
 	}
+	public void updateHit(int bo_num)  {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "update board_1 set bo_readcount = bo_readcount+1 "
+			+ " where bo_num=?"; 
+		try{conn  = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bo_num);			
+			pstmt.executeUpdate();			
+		}catch(Exception e) { System.out.println(e.getMessage());
+		}finally {
+			try{
+				if (pstmt !=null) pstmt.close();
+				if (conn !=null) conn.close();
+			}catch(Exception e){}
+		}
+	}
+	public List<Board_1> selectList(int startRow,int endRow) {
+		List<Board_1> list  = new ArrayList<>();
+		Connection conn = null;
+		PreparedStatement pstmt = null; 
+		ResultSet rs = null;
+		String sql = "select * from (select rowNum rn, a.* from "
+			+"(select * from board order by ref desc,re_step) a) "
+			+" where rn between ? and ?";  
+		try{conn  = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Board_1 bo1 = new Board_1();
+				bo1.setBo_num(rs.getInt("bo_num"));
+				bo1.setBo_writer(rs.getString("bo_writer"));
+				bo1.setBo_password(rs.getString("bo_password"));				
+				bo1.setBo_brand(rs.getString("bo_brand"));
+				bo1.setBo_price(rs.getString("bo_price"));
+				bo1.setBo_capacity(rs.getString("bo_capacity"));
+				bo1.setBo_place(rs.getString("bo_place"));
+				bo1.setBo_grade(rs.getString("bo_grade"));
+				bo1.setBo_pros(rs.getString("bo_pros"));
+				bo1.setBo_cons(rs.getString("bo_cons"));
+				bo1.setBo_reco(rs.getString("bo_reco"));
+				bo1.setBo_imag(rs.getString("bo_imag"));
+				list.add(bo1);
+			}			
+		}catch(Exception e) { System.out.println(e.getMessage());
+		}finally {
+			try{
+				if (rs !=null) rs.close();
+				if (pstmt !=null) pstmt.close();
+				if (conn !=null) conn.close();
+			}catch(Exception e){}
+		}
+		return list;
+	}
+	public int idChk(String id) throws SQLException{
+		int x=-1;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from Member2 where id = ?";
+		try{
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {		
+				if(id.equals(id))		x= 1; 
+				else			x= 0; 
+			}else				x= -1;			
+	        } catch(Exception e) {System.out.println(e.getMessage());
+	        } finally {
+				if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+	            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+	            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+	        }
+			return x;
+		}
 }

@@ -44,8 +44,10 @@ bo_likecount number default 0 ,   -- 좋아요수
 reg_date date not null -- 작성일
 );
 
+
+
 select * from BOARD_1;
-select * from board;
+drop table board;
 select * from manager;
 
 create table board (
@@ -60,7 +62,9 @@ create table board (
 	re_step number not null, -- ref내의 순서
 	re_level number not null, -- 들여쓰기
 	ip varchar2(20) not null, -- 작성자 ip
-	reg_date date not null -- 작성일
+	reg_date date not null, -- 작성일
+	del_yn char(1) default 'n',
+	image varchar2(30) default 'nothing.jpg'
 );
 
 create table sale (

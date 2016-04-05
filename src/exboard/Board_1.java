@@ -18,6 +18,14 @@ public class Board_1 {
 	private int bo_readcount;    //조회수
 	private int bo_likecount;    //좋아요수
 	private Timestamp reg_date; //작성일
+	private String id;
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public int getBo_num() {
 		return bo_num;
 	}
