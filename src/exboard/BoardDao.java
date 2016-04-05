@@ -251,4 +251,28 @@ public class BoardDao {
 			try {conn.close(); } catch(SQLException s) {}
 		}
 	}
+	public int idChk(String id) throws SQLException{
+		int x=-1;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from Member2 where id = ?";
+		try{
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {		
+				if(id.equals(id))		x= 1; 
+				else			x= 0; 
+			}else				x= -1;			
+	        } catch(Exception e) {System.out.println(e.getMessage());
+	        } finally {
+				if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+	            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+	            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+	        }
+			return x;
+		}
+	
 }
