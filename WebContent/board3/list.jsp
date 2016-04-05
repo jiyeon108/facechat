@@ -8,7 +8,11 @@
 <%
 	String path = request.getContextPath();
 %>
-
+<!-- <script type="text/javascript">
+function memberCheck() {
+	window.open("../board3/memberCheck.jsp?id="+frm.id.value, " ", "width='300' height='300'");
+}
+</script> -->
 </head>
 <body>
 <table border = "1" align="center" width="70%"> 
@@ -59,7 +63,8 @@
 	<%} %>
 
 <div align="center">
-	<button onclick="location.href='<%=path%>/main/temp.jsp?pgm=/board3/writeForm.jsp'">글쓰기</button>
+	<button onclick="location.href='<%=path%>/main/temp.jsp?pgm=/board3/memberCheck.jsp'">글쓰기</button>
+	<!-- <input type="button" value="글쓰기" onclick="memberCheck()"> -->
 </div>
 </body>
 </html>

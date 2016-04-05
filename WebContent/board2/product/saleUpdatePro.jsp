@@ -41,8 +41,8 @@
   sale.setS_term(s_term);
   sale.setS_image(filename);
   
-  SaleDao sd = SaleDao.getInstance();
-  int result = sd.updateSale(sale, s_num); 
+  SaleDao saleProcess = SaleDao.getInstance();
+  int result = saleProcess.updateSale(sale, s_num); 
   if (result > 0 ) {
   	response.sendRedirect("saleList.jsp?s_brand="+s_brand);
   } else {

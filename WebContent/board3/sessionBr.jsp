@@ -1,6 +1,6 @@
 <%
 	String id = (String)session.getAttribute("id");
-	if(id == null || id == ""){
+	if(id == ""){
 		response.sendRedirect("writeForm.jsp");
 	}
 %>

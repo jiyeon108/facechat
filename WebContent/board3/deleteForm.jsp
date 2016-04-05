@@ -16,12 +16,12 @@
 </script>
 </head>
 <body>
-<% 
+<%
 	int num = Integer.parseInt(request.getParameter("num"));
 	String pageNum = request.getParameter("pageNum");
 	BoardDao bd = BoardDao.getInstance();
 	Board board = bd.select(num);
-	String dbPass = board.getPasswd(); 
+	String dbPass = board.getPasswd();
 %>
 <form action="../board3/deletePro.jsp" name = "frm" onsubmit="return chk()">
 	<input type="hidden" name="pageNum" value="<%=pageNum %>">
