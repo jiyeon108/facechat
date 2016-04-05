@@ -21,8 +21,8 @@ function join() {
 		%>
 		<table border="1" cellspacing="0" width="100%">
 			<tr height="100">
-				<td width="30%">
-					<a href="temp.jsp?pgm=home.jsp"><img src="logo.jpg" width="150" height="120"></a>
+				<td align="center" width="30%">
+					<a href="temp.jsp?pgm=home.jsp"><img src="logo.jpg" width="300" height="200"></a>
 				</td>
 				<td width="45%">
 					<input type="text" placeholder="검색" size="30">
