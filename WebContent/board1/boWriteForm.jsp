@@ -12,50 +12,50 @@
 		method="post" enctype="multipart/form-data">
 		<table align="center">
 			<caption>
-				<h2>포토리뷰 작성</h2>
+				<h2>리뷰 작성</h2>
 			</caption>
 			<tr>
-				<th>아이디 <input type="text" name="bo_writer" required="required">
-				</th>
+				<td>아이디 <input type="text" name="bo_writer" required="required">
+				</td>
 			</tr>
 			<tr>
-				<th>비밀번호 <input type="password" name="bo_password" required="required">
-				</th>
+				<td>비밀번호 <input type="password" name="bo_password" required="required">
+				</td>
 			</tr>
 			<tr>
-				<th>상품명 <input type="text" name="bo_brand" required="required">
-				</th>
+				<td>상품명 <input type="text" name="bo_brand" required="required">
+				</td>
 			</tr>
 			<tr>
-				<th>이미지 <input type="file" name="bo_image" required="required" multiple="multiple">
-				</th>
+				<td>이미지 <input type="file" name="bo_image" required="required" multiple="multiple">
+				</td>
 			</tr>
 			<tr>
-				<th>가격 <input type="text" size="7" name="bo_price" required="required"> 
+				<td>가격 <input type="text" size="7" name="bo_price" required="required"> 
 					용량 <input type="text" size="7" name="bo_capacity" required="required"> 
 					구매장소 <input type="text" size="7" name="bo_place" required="required">
-				</th>
+				</td>
 			</tr>
 			<tr>
-				<th>장점
+				<td>장점
 					<p>
 						<textarea name="bo_pros" rows="7" cols="45"></textarea>
-				</th>
+				</td>
 			</tr>
 			<tr>
-				<th>단점
+				<td>단점
 					<p>
 						<textarea name="bo_cons" rows="7" cols="45"></textarea>
-				</th>
+				</td>
 			</tr>
 			<tr>
-				<th>꿀팁
+				<td>꿀팁
 					<p>
 						<textarea name="bo_reco" rows="5" cols="45"></textarea>
-				</th>
+				</td>
 			</tr>
 			<tr>
-				<th>별점주기
+				<td>별점주기
 					<p><input type="text" name="bo_grade">
 						<!-- <div class="title"></div>
                 <div style="display: inline-block" id="rating" class="raty unpa-review-rating"></div>
@@ -70,11 +70,11 @@
                             starOn  : '/assets/raty/images/unpa-star.png'
                             });
 				   </script> -->
-				</th>
+				</td>
 			</tr>
 			<tr>
-				<th><input type="submit" value="확인">
-					<input type="reset" value="취소"></th>
+				<td><input type="submit" value="확인">
+					<input type="reset" value="취소"></td>
 			</tr>
 		</table>
 	</form>
