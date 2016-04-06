@@ -18,14 +18,13 @@
 		int result = md.loginChk2(mem2.getId(), mem2.getPassword());
 		if (result > 0) {
 			session.setAttribute("id", mem2.getId());
-			if(mem2.getId().equals("master")) {%>
-			<script type="text/javascript">
-				alert("관리자 페이지로 넘어 갑니다.")
-				location.href="<%=path %>manager/managerMain.jsp"
-			</script>
-				<%} %>		
+			if(mem2.getId().equals("master")) {
+				response.sendRedirect("../board2/managerMain.jsp");
+				} else {
+				session.setAttribute("id", mem2.getId());
+				response.sendRedirect("../main/temp.jsp");}%>		
 				
-		<%	response.sendRedirect("../main/temp.jsp");
+		
 		} else if (result == 0) {
 	%>
 	<script type="text/javascript">

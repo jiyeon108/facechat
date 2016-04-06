@@ -1,33 +1,64 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%@ include file="managerSessionChk.jsp"%>
+
 
 <html>
 <head>
+<%
+	String path = request.getContextPath();
+%>
 <title>세일상품 관리</title>
-<style type="text/css">
-table {
-	padding: 5;
-}
-</style>
+<link href="../temp.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<b>관리작업중.. </b>
-	<input type="button" value="로그아웃"
-		onclick="location.href='../board2/logon/managerLogout.jsp'">
+	
+	<table border="1" cellspacing="0" width="100%">
+		<tr height="100">
+			<td width="30%">
+					<a href="../board2/managerMain.jsp"><img src="../main/logo.jpg" width="150" height="120"></a>
+			</td>
+			<td width="45%">
+					<input type="text" placeholder="검색" size="30">
+			</td>
+			<td width="25%" class="right">
+				<b><%=session.getAttribute("id")%>님 환영합니다.</b>
+				<p>
+				<input type="button" value="마이페이지"
+					onclick="location.href='<%=path%>/main/temp.jsp?pgm=/member/mypage.jsp'">
+				<input type="button" value="로그아웃"
+					onclick="location.href='<%=path%>/member/logout.jsp'">
+			</td>
+		</tr>
+	</table>
+	
+	<table height="60" width="100%" border="1" cellspacing="0">
+		<tr>
+			<td width="30%"><a href="../main/temp.jsp?pgm=/board1/board1.jsp">리뷰존</a></td>
+			<td width="35%"><a href="../main/temp.jsp?pgm=/board2/board2.jsp">브랜드존</a></td>
+			<td width="35%"><a href="../main/temp.jsp?pgm=/board3/list.jsp">커뮤니티</a></td>
+		</tr>
+	</table>
+	
 	<br>
-	<table border="0" width="300">
+	<table align="center" border="0" width="300"  >
 		<tr>
 			<td align="center">세일관련 작업</td>
 		</tr>
 		<tr>
-			<td><a href='product/saleInsertForm.jsp'>상품등록</a></td>
+			<td><a href='../main/temp.jsp?pgm=/board2/product/saleInsertForm.jsp'>상품등록</a></td>
 		</tr>
 		<tr>
-			<td><a href='product/saleList.jsp?s_salename=all'>상품수정/삭제</a></td>
+			<td><a href='../main/temp.jsp?pgm=/board2/product/saleList.jsp?s_salename=all'>상품수정/삭제</a></td>
 		</tr>
 	</table>
 	<br>
 	<br>
+	
+	<hr>
+>
+	주소) 강남구 역삼동 테헤란로 7
+	<p>
+	tel) 010-111-*11132
+	
 </body>
 </html>

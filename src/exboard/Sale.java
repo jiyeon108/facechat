@@ -8,7 +8,14 @@ public class Sale {
 	private String s_store; // 세일매장
 	private String s_term; // 세일기간
 	private String s_image ;// 사진
+	private int count; //세일등록된 숫자
 	
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
 	public int getS_num() {
 		return s_num;
 	}

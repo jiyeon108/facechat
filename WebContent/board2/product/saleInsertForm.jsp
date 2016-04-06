@@ -1,22 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8" import="java.sql.*"%>
-<%@ include file="../managerSessionChk.jsp"%>
+
 
 <!DOCTYPE html>
 <html>
 <head>
-
+<%
+	String path = request.getContextPath();
+%>
 <title>상품등록</title>
 
 </head>
 <body>
-
+	
+	
 	<div align="center">
 		<h2>책 등록</h2>
-		<form action="../product/saleInsertPro.jsp" method="post" name="writeform" enctype="multipart/form-data">
+		<form action="../board2/product/saleInsertPro.jsp" method="post" name="writeform" enctype="multipart/form-data">
 			<table width="500" border="1">
 				<tr>
-					<td align="right" colspan="2"><a href="../managerMain.jsp">	관리자 메인으로</a></td>
+					<td align="right" colspan="2"><a href="../board2/managerMain.jsp">	관리자 메인으로</a></td>
 				</tr>
 				<tr>
 					<td>브랜드명</td>

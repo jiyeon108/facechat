@@ -1,5 +1,6 @@
 select * from MEMBER2;
 
+
 create table board (
 	num number primary key, -- key
 	writer varchar2(20) not null, -- 작성자
@@ -15,6 +16,7 @@ create table board (
 	reg_date date not null -- 작성일
 );
 select * from board;
+
 
 create table board33 (
 	num number primary key, -- key
@@ -76,3 +78,20 @@ create sequence sale_seq start with 1
 	increment by 1 nocycle nocache;
 
 select * from sale;
+
+create table board (
+	num number primary key, -- key
+	writer varchar2(20) not null, -- 작성자
+	subject varchar2(50) not null, -- 제목
+	content varchar2(500) not null, -- 본문
+	email varchar2(30), -- 이메일
+	readcount number default 0, -- 읽은 횟수
+	passwd varchar2(12) not null, -- 암호
+	ref number not null, -- 답변글끼리 그룹
+	re_step number not null, -- ref내의 순서
+	re_level number not null, -- 들여쓰기
+	ip varchar2(20) not null, -- 작성자 ip
+	reg_date date not null, -- 작성일
+	del_yn char(1) default 'n',
+	image varchar2(30) default 'nothing.jpg'
+);

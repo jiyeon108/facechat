@@ -2,10 +2,13 @@
 	pageEncoding="utf-8"%>
 <%@ page import="exboard.*"%>
 <%@ page import="java.util.List,java.text.SimpleDateFormat"%>
-<%@ include file="../managerSessionChk.jsp"%>
+
 
 <html>
 <head>
+<%
+	String path = request.getContextPath();
+%>
 <title>세일등록상황</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 <style type="text/css">
@@ -21,9 +24,9 @@
 </head>
 <body>
 
-	<a href="../managerMain.jsp"> 관리자 메인으로</a> &nbsp;
+	<a href="<%=path%>/main/temp.jsp?pgm=/board2/managerMain.jsp"> 관리자 메인으로</a> &nbsp;
 <div align="right"> 
-		<input type ="button"  value="등록" onclick="location.href='../product/saleInsertForm.jsp'"><p>
+		<input type ="button"  value="등록" onclick="location.href='<%=path%>/main/temp.jsp?pgm=/board2/product/saleInsertForm.jsp'"><p>
 </div>
 	<table border="1" >
 		<tr height="30">
@@ -52,9 +55,9 @@
 	int startPage =(nowPage -1)/10*10 +1;
 	int endPage   = startPage+pagePerBlock -1;
 	if(endPage > totalPage) endPage = totalPage;
-	total = total - startRow +1;
+	total = total - startRow +1; 
 	List<Sale> list = sd.selectList(startRow, endRow);
-	if(list !=null){
+	if(list !=null){ 
 		for(Sale sal :list){ %>
 			<tr><td><%=sal.getS_num() %></td>
 				<td><%=sal.getS_brand()%></td>
@@ -63,9 +66,9 @@
 				<td><%=sal.getS_term()%></td>
 				<td><%=sal.getS_image() %></td>
 				<td>
-         		<a href="saleUpdateForm.jsp?s_num=<%=sal.getS_num() %>&s_name=<%=sal.getS_brand()%>">수정</a></td>
+         		<a href="<%=path%>/main/temp.jsp?pgm=/board2/product/saleUpdateForm.jsp?s_num=<%=sal.getS_num() %>&s_name=<%=sal.getS_brand()%>">수정</a></td>
       			<td>
-      		  	 <a href="saleDeleteForm.jsp?s_num=<%=sal.getS_num() %>&s_name=<%=sal.getS_brand()%>">삭제</a></td>
+      		  	 <a href="<%=path%>/main/temp.jsp?pgm=/board2/product/saleDeleteForm.jsp?s_num=<%=sal.getS_num() %>&s_name=<%=sal.getS_brand()%>">삭제</a></td>
 				
 			</tr>
 
@@ -92,10 +95,10 @@
 </div>
 <div align="right"> 
 	
-		
+<%-- 		
 
-	<input type ="button"  value="수정" onclick="location.href='../sale/saleUpdateForm.jsp'">
-	<input type ="button" value="삭제" onclick="location.href='../sale/saleDeleteForm.jsp'">
+	<input type ="button"  value="수정" onclick="location.href='<%=path%>/main/temp.jsp?pgm=/board2/product/saleUpdateForm.jsp'">
+	<input type ="button" value="삭제" onclick="location.href='<%=path%>/main/temp.jsp?pgm=/board2/product/saleDeleteForm.jsp'"> --%>
 </div>		
 </body>
 </html>

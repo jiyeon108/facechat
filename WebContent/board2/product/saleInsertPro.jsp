@@ -3,10 +3,13 @@
 <%@ page import="java.sql.*,com.oreilly.servlet.MultipartRequest"%>
 <%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@ page import="java.util.*,java.io.*"%> 
-<%@ include file="../managerSessionChk.jsp"%>
+
 <!DOCTYPE ">
 <html>
 <head>
+<%
+	String path = request.getContextPath();
+%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
@@ -17,7 +20,7 @@
 	String realFolder = "";//웹 어플리케이션상의 절대 경로
 	String filename ="";
 	MultipartRequest imageUp = null;
-	String saveFolder = "imageFile";//파일이 업로드되는 폴더를 지정한다.
+	String saveFolder = "board2/imageFile";//파일이 업로드되는 폴더를 지정한다.
 	String encType = "utf-8"; //엔코딩타입
 	int maxSize = 5*1024*1024;  //최대 업로될 파일크기 5Mb
 	ServletContext context = getServletContext();
@@ -47,13 +50,13 @@
 	SaleDao saleProcess = SaleDao.getInstance();
 	int result = saleProcess.insertSale(sale);
 	if (result > 0) {	
-		response.sendRedirect("../product/saleList.jsp");
+		response.sendRedirect(path+"/main/temp.jsp?pgm=/board2/product/saleList.jsp");
 		
 		
-	} else { %>s
+	} else { %>
 
 		 <script type="text/javascript">
 			alert("데이터 입력중에 에러가 발생했습니다. 메세지 확인하세요");
-			location.href ='saleInsertForm.jsp';
+			location.href ='<%=path%>/main/temp.jsp?pgm=/board2/product/saleInsertForm.jsp';
 		</script>
 <%  }  %>
