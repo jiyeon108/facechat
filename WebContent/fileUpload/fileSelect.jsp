@@ -8,8 +8,7 @@
 </head>
 <body>
 <form action="fileUpload.jsp" method="post" enctype="multipart/form-data">
-	제목 : <input type="text" name="title" required="required"><p>
-	작성자 : <input type="text" name="writer" required="required"><p>
+	작성자 : <input type="text" name="bo_writer" required="required"><p>
 	파일 : <input type="file" name="fileName" required="required"><p>
 	<input type="submit" value="확인">
 </form>

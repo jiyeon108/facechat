@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.*;
+
 import javax.naming.*;
 import exboard.*;
 
@@ -216,6 +217,50 @@ public class BoardDao_1 {
 		}
 		return list;
 	}
+	public ArrayList<Board_1> getBoard1(String bo_brand) {
+        Connection conn = null;     PreparedStatement pstmt = null;
+        ResultSet rs = null;        
+        ArrayList<Board_1> boardList1=null;  
+        String sql1="select * from board_1 order by reg_date desc";
+        String sql2 = "select * from board_1 where " +
+        		"bo_brand = ? order by reg_date desc";
+        try { conn = getConnection();           
+            if(bo_brand.equals("all")){
+            	 pstmt = conn.prepareStatement(sql1);
+            }else{
+                pstmt = conn.prepareStatement(sql2);
+                pstmt.setString(1, bo_brand);
+            }
+        	rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+            	boardList1 = new ArrayList<Board_1>();
+                do{
+                	Board_1 bo1= new Board_1();
+                	bo1.setBo_writer(rs.getString("bo_writer"));
+                	bo1.setBo_password(rs.getString("bo_password"));				
+    				bo1.setBo_brand(rs.getString("bo_brand"));
+    				bo1.setBo_price(rs.getString("bo_price"));
+    				bo1.setBo_capacity(rs.getString("bo_capacity"));
+    				bo1.setBo_place(rs.getString("bo_place"));
+    				bo1.setBo_grade(rs.getString("bo_grade"));
+    				bo1.setBo_pros(rs.getString("bo_pros"));
+    				bo1.setBo_cons(rs.getString("bo_cons"));
+    				bo1.setBo_reco(rs.getString("bo_reco"));
+    				bo1.setBo_imag(rs.getString("bo_imag"));
+                	bo1.setReg_date(rs.getTimestamp("reg_date"));
+                    
+                	boardList1.add(bo1);
+			    }while(rs.next());
+			}
+        } catch(Exception e) {System.out.println(e.getMessage());
+        } finally {
+            if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+        }
+		return boardList1;
+    }
 	public int idChk(String id) throws SQLException{
 		int x=-1;
 		Connection conn = null;

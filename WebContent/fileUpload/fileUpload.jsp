@@ -12,25 +12,23 @@
 <body>
 <%
 	request.setCharacterEncoding("utf-8");
-	String fileSave = "/fileSave";
+	String fileSave = "images";
 	String realPath = application.getRealPath(fileSave);
 	int maxSize = 5 * 1024 * 1024;	//5M
 	MultipartRequest mr = new MultipartRequest(request,realPath,
 			maxSize,"utf-8",new DefaultFileRenamePolicy());
-	String title = mr.getParameter("title");
-	String writer = mr.getParameter("writer");
-	String fileName = mr.getFilesystemName("fileName");
-	String oriName = mr.getOriginalFileName("fileName");
-	File file= new File(realPath+"/"+fileName);
+	String bo_writer = mr.getParameter("bo_writer");
+	String bo_imag = mr.getFilesystemName("bo_imag");
+	String oriName = mr.getOriginalFileName("bo_imag");
+	File file= new File(realPath+"/"+bo_imag);
 	int fileSize = (int)file.length();
 %>
 <h2>파일 업로드 결과</h2>
-제목 : <%=title %><p>
-작성자 : <%=writer %><p>
-파일명 : <%=fileName %><p>
+작성자 : <%=bo_writer %><p>
+파일명 : <%=bo_imag %><p>
 원래명 : <%=oriName %><p>
 크기 : <%=fileSize %><p>
 그림 : <br>
-<img alt="" src="../fileSave/<%=fileName %>">
+<img alt="" src="../images/<%=bo_imag %>">
 </body>
 </html>

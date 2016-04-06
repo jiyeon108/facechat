@@ -14,7 +14,7 @@ create table board (
 	ip varchar2(20) not null, -- 작성자 ip
 	reg_date date not null -- 작성일
 );
-select * from board;
+select * from board_1;
 
 create table board33 (
 	num number primary key, -- key

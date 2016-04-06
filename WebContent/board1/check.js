@@ -13,3 +13,11 @@ function check(){
 	}
 	return true;
  }
+function dcheck() {
+	if(frm.bo_password.value!==frm.dbPass.value) { 
+		alert("암호가 틀립니다."); 
+		frm.passwd.focus(); 
+		return false;
+	}
+	return true;
+}

@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="../board1/check.js"></script>
 </head>
 <body>
 <%
@@ -14,7 +15,7 @@
 	Board_1 bo1 = bd1.select(num);
 	String dbPass = bo1.getBo_password();
 %>
-<form action="../board1/boDelete.jsp" name = "frm" onsubmit="return chk()">
+<form action="../board1/boDelete.jsp" name = "frm" onsubmit="return dcheck()">
 	<input type="hidden" name="pageNum" value="<%=pageNum %>">
 	<input type="hidden" name = "num" value="<%=num %>">
 	<input type = "hidden" name = "dbPass" value="<%=dbPass %>">
