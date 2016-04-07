@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="exboard.*,java.util.*"%>
+<%@ page import="java.util.List,java.text.SimpleDateFormat" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,30 +10,47 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	.m { width: 250;
-		height: 150px;	
+	.m { width: 150;
+		height: 180px;	
 	}
 </style>
 </head>
 <body>
+<%
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+	List<Board_1> boardList1 = null;
+	int number = 0;
+	String bo_image = request.getParameter("bo_image");
+	
+	BoardDao_1 boardProcess = BoardDao_1.getInstance();
+	List<Board_1> list = boardProcess.selectList(1, 10);
+	if(list != null){
+		if(list.size() != 0){
 
+%>
 <table border="1">
-<h2>리뷰존</h2>
+	<%
+		for(Board_1 brd1 : list){
+	%>	
 	<tr>
-		<td colspan="3"><img src="../images/icox_logo.gif" class="m"></td>
+		<td>
+		<%=brd1.getBo_brand()%><p>
+		<img class="m" src="../images/<%=brd1.getBo_image()%>"><p>
+		<%=brd1.getBo_writer()%><p>
+		<%=brd1.getBo_readcount()%>
+		<%=brd1.getBo_likecount()%>
+		<%=brd1.getReg_date()%>
+		</td>
 	</tr>
-	<tr>
-		<th colspan="3">bo_brand</th><tr>
-	<tr>
-		<th colspan="3">bo_writer</th></tr>
-	<tr>
-		<th>bo_readcount</th>
-		<th>bo_likecount</th>
-		<th>reg_date</th>
-	</tr>
-
+	<%
+			
+		}
+	%>
 </table>
-
+<%
+		}
+	}
+%>
 	<input type="button" value="글쓰기" 
 		onclick="location.href='<%=path%>/main/temp.jsp?pgm=/board1/boWriteForm.jsp'">
 

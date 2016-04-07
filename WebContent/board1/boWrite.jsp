@@ -36,7 +36,8 @@
 	String bo_place = imageUp.getParameter("bo_place");   
 	String bo_pros = imageUp.getParameter("bo_pros");  
 	String bo_cons = imageUp.getParameter("bo_cons"); 
-	String bo_reco = imageUp.getParameter("bo_reco");    
+	String bo_reco = imageUp.getParameter("bo_reco");  
+	String bo_image = imageUp.getParameter("bo_image"); 
 	String bo_grade = imageUp.getParameter("bo_grade"); 
 
 	bo1.setBo_writer(bo_writer);
@@ -48,7 +49,7 @@
 	bo1.setBo_pros(bo_pros);
 	bo1.setBo_cons(bo_cons);
 	bo1.setBo_reco(bo_reco);
-	bo1.setBo_imag(bo_imag);
+	bo1.setBo_image(bo_image);
 	bo1.setBo_grade(bo_grade);
 	bo1.setReg_date(new Timestamp(System.currentTimeMillis()));
 	

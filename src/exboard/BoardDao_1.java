@@ -50,7 +50,7 @@ public class BoardDao_1 {
 			pstmt.setString(9, bo1.getBo_pros());
 			pstmt.setString(10, bo1.getBo_cons());
 			pstmt.setString(11, bo1.getBo_reco());
-			pstmt.setString(12, bo1.getBo_imag());
+			pstmt.setString(12, bo1.getBo_image());
 			pstmt.setTimestamp(13, bo1.getReg_date());
 			result = pstmt.executeUpdate();
 			
@@ -100,7 +100,7 @@ public class BoardDao_1 {
 				bo1.setBo_pros(rs.getString("bo_pros"));
 				bo1.setBo_cons(rs.getString("bo_cons"));
 				bo1.setBo_reco(rs.getString("bo_reco"));
-				bo1.setBo_imag(rs.getString("bo_imag"));
+				bo1.setBo_image(rs.getString("bo_image"));
 				bo1.setReg_date(rs.getTimestamp("Reg_date"));
 
 			} 
@@ -151,7 +151,7 @@ public class BoardDao_1 {
 			pstmt.setString(8, bo1.getBo_pros());
 			pstmt.setString(9, bo1.getBo_cons());
 			pstmt.setString(10,bo1.getBo_reco());
-			pstmt.setString(11, bo1.getBo_imag());
+			pstmt.setString(11, bo1.getBo_image());
 			pstmt.setInt(12, bo1.getBo_num());
 			result = pstmt.executeUpdate();
 		}catch(Exception e) {System.out.println(e.getMessage());
@@ -184,7 +184,7 @@ public class BoardDao_1 {
 		PreparedStatement pstmt = null; 
 		ResultSet rs = null;
 		String sql = "select * from (select rowNum rn, a.* from "
-			+"(select * from board order by ref desc,re_step) a) "
+			+"(select * from board_1 order by bo_num desc) a) "
 			+" where rn between ? and ?";  
 		try{conn  = getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -204,7 +204,7 @@ public class BoardDao_1 {
 				bo1.setBo_pros(rs.getString("bo_pros"));
 				bo1.setBo_cons(rs.getString("bo_cons"));
 				bo1.setBo_reco(rs.getString("bo_reco"));
-				bo1.setBo_imag(rs.getString("bo_imag"));
+				bo1.setBo_image(rs.getString("bo_image"));
 				list.add(bo1);
 			}			
 		}catch(Exception e) { System.out.println(e.getMessage());
@@ -247,7 +247,7 @@ public class BoardDao_1 {
     				bo1.setBo_pros(rs.getString("bo_pros"));
     				bo1.setBo_cons(rs.getString("bo_cons"));
     				bo1.setBo_reco(rs.getString("bo_reco"));
-    				bo1.setBo_imag(rs.getString("bo_imag"));
+    				bo1.setBo_image(rs.getString("bo_image"));
                 	bo1.setReg_date(rs.getTimestamp("reg_date"));
                     
                 	boardList1.add(bo1);

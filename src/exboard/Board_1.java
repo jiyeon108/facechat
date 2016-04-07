@@ -14,7 +14,7 @@ public class Board_1 {
 	private String bo_pros;  //장점
 	private String bo_cons;  //단점
 	private String bo_reco;  //추천
-	private String bo_imag;   //사진
+	private String bo_image;   //사진
 	private int bo_readcount;    //조회수
 	private int bo_likecount;    //좋아요수
 	private Timestamp reg_date; //작성일
@@ -92,11 +92,11 @@ public class Board_1 {
 	public void setBo_reco(String bo_reco) {
 		this.bo_reco = bo_reco;
 	}
-	public String getBo_imag() {
-		return bo_imag;
+	public String getBo_image() {
+		return bo_image;
 	}
-	public void setBo_imag(String bo_imag) {
-		this.bo_imag = bo_imag;
+	public void setBo_image(String bo_image) {
+		this.bo_image = bo_image;
 	}
 	public int getBo_readcount() {
 		return bo_readcount;
