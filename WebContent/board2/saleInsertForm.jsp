@@ -16,7 +16,7 @@
 	
 	<div align="center">
 		<h2>책 등록</h2>
-		<form action="../board2/product/saleInsertPro.jsp" method="post" name="writeform" enctype="multipart/form-data">
+		<form action="../board2/saleInsertPro.jsp" method="post" name="writeform" enctype="multipart/form-data">
 			<table width="500" border="1">
 				<tr>
 					<td align="right" colspan="2"><a href="../board2/managerMain.jsp">	관리자 메인으로</a></td>
@@ -46,6 +46,10 @@
 				<tr>
 					<td>이미지</td>
 					<td><input type="file" name="s_image" required="required"></td>
+				</tr>
+				<tr>
+					<td>링크</td>
+					<td><input type="url" size="50" maxlength="50" name="s_link" required="required"></td>
 				</tr>
 				
 				<tr>

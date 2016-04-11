@@ -40,27 +40,27 @@
 
   Sale sale = new Sale();
   int s_num= Integer.parseInt(imageUp.getParameter("s_num"));  
-  //String s_num =  imageUp.getParameter("s_num");
-  String s_brand	  = imageUp.getParameter("s_brand");
+   String s_brand	  = imageUp.getParameter("s_brand");
   String s_salename   = imageUp.getParameter("s_salename");
   String s_store 	  = imageUp.getParameter("s_store");
   String s_term 	  = imageUp.getParameter("s_term");
-  
+  String s_link		  = imageUp.getParameter("s_link");
   
   
   sale.setS_brand(s_brand);
   sale.setS_salename(s_salename);
   sale.setS_store(s_store);
   sale.setS_term(s_term);
+  sale.setS_link(s_link);
   
   SaleDao sd = SaleDao.getInstance();
   int result = sd.updateSale(sale, s_num);
   if (result > 0 ) {
-  	response.sendRedirect(path+"/main/temp.jsp?pgm=/board2/product/saleList.jsp?s_brand="+s_brand);
+  	response.sendRedirect(path+"/main/temp.jsp?pgm=/board2/saleList.jsp?s_brand="+s_brand);
   } else {
 %>
 	<script type="text/javascript">
 		alert("수정중에 에러 발생, 콘솔 메세지를 확인하세요");
-		location.href='../product/saleUpdateForm.jsp';
+		location.href='../saleUpdateForm.jsp';
 	</script>
 <%  }  %>

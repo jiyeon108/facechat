@@ -25,7 +25,7 @@
 
 	<a href="<%=path%>/main/temp.jsp?pgm=/board2/managerMain.jsp"> 관리자 메인으로</a> &nbsp;
 <div align="right"> 
-		<input type ="button"  value="등록" onclick="location.href='<%=path%>/main/temp.jsp?pgm=/board2/product/saleInsertForm.jsp'"><p>
+		<input type ="button"  value="등록" onclick="location.href='<%=path%>/main/temp.jsp?pgm=/board2/saleInsertForm.jsp'"><p>
 </div>
 	<table border="1" >
 		<tr height="30">
@@ -35,6 +35,7 @@
 			<th>매장</th>
 			<th>기간</th>
 			<th>이미지</th>
+			<th>링크</th>
 			<th>수정</th>
 			<th>삭제</th>
 			
@@ -63,10 +64,11 @@ if (list != null) {
 	<td><%=sal.getS_store()%></td>
 	<td><%=sal.getS_term()%></td>
 	<td><%=sal.getS_image() %></td>
+	<td><%=sal.getS_link() %></td>
 	<td>
-       <a href="<%=path %>/main/temp.jsp?pgm=/board2/product/saleUpdateForm.jsp?s_num=<%=sal.getS_num() %>&s_name=<%=sal.getS_brand()%>">수정</a></td>
+       <a href="<%=path %>/main/temp.jsp?pgm=/board2/saleUpdateForm.jsp?s_num=<%=sal.getS_num() %>&s_name=<%=sal.getS_brand()%>">수정</a></td>
     <td>
-      <a href="<%=path %>/main/temp.jsp?pgm=/board2/product/saleDeleteForm.jsp?s_num=<%=sal.getS_num() %>&s_name=<%=sal.getS_brand()%>">삭제</a></td>
+      <a href="<%=path %>/main/temp.jsp?pgm=/board2/saleDeleteForm.jsp?s_num=<%=sal.getS_num() %>&s_name=<%=sal.getS_brand()%>">삭제</a></td>
 </tr>
 <% 		}
 } else { %>
@@ -75,13 +77,13 @@ if (list != null) {
 </table>				
 <div align="center">
 <% if(startPage > pagePerBlock) {	%>
-<a href="../main/temp.jsp?pgm=/board2/product/saleList.jsp?pageNum=<%=startPage - pagePerBlock %>">이전</a>
+<a href="../main/temp.jsp?pgm=/board2/saleList.jsp?pageNum=<%=startPage - pagePerBlock %>">이전</a>
 <% } %>
 <% for (int i = startPage; i<=endPage; i++) { %>
-<a href="../main/temp.jsp?pgm=/board2/product/saleList.jsp?pageNum=<%=i %>">[<%=i %>]</a>
+<a href="../main/temp.jsp?pgm=/board2/saleList.jsp?pageNum=<%=i %>">[<%=i %>]</a>
 <%} 
 if(totalPage > endPage) {	%> 
-<a href="../main/temp.jsp?pgm=/board2/product/saleList.jsp?pageNum=<%=startPage + pagePerBlock %>">다음</a>
+<a href="../main/temp.jsp?pgm=/board2/saleList.jsp?pageNum=<%=startPage + pagePerBlock %>">다음</a>
 <%} %>
 
 </div>		

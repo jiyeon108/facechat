@@ -40,15 +40,17 @@
 	</table>
 	
 	<br>
-	<table align="center" border="0" width="300"  >
+	<table align="center" border="0" width="300" height="300" >
 		<tr >
 			<h2 align = "center">관리자 페이지 입니다.</h2>
 		</tr>
 		<tr>
-			<td><a href='../main/temp.jsp?pgm=/board2/product/saleInsertForm.jsp'>상품등록</a></td>
+			<td height="150"><a href='../main/temp.jsp?pgm=/board2/saleInsertForm.jsp'>상품등록</a>
+			</td>
 		</tr>
 		<tr>
-			<td><a href='../main/temp.jsp?pgm=/board2/product/saleList.jsp?s_salename=all'>상품수정/삭제</a></td>
+			<td height="150"><a href='../main/temp.jsp?pgm=/board2/saleList.jsp?s_salename=all'>상품수정/삭제</a>
+			</td>
 		</tr>
 	</table>
 	<br>

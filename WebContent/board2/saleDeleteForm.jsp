@@ -21,9 +21,9 @@
 <body>
 		<h2>책삭제</h2>
 		<a href="<%=path %>/main/temp.jsp?pgm=/board2/managerMain.jsp"> 관리자 메인으로</a> &nbsp;
-		<a href="<%=path %>/main/temp.jsp?pgm=/board2/product/saleList.jsp?s_brand=<%=s_brand%>">목록으로</a>
+		<a href="<%=path %>/main/temp.jsp?pgm=/board2/saleList.jsp?s_brand=<%=s_brand%>">목록으로</a>
 		<p>
 			<input type="button" value="삭제"
-				onclick="location.href='<%=path %>/main/temp.jsp?pgm=/board2/product/saleDeletePro.jsp?s_num=<%=s_num%>&s_brand=<%=s_brand%>'">
+				onclick="location.href='<%=path %>/main/temp.jsp?pgm=/board2/saleDeletePro.jsp?s_num=<%=s_num%>&s_brand=<%=s_brand%>'">
 </body>
 </html>

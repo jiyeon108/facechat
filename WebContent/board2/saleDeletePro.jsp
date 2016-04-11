@@ -19,7 +19,7 @@
 	if (result > 0) { %>
 	<script type="text/javascript">
 
-	location.href="<%=path %>/main/temp.jsp?pgm=/board2/product/saleList.jsp";
+	location.href="<%=path %>/main/temp.jsp?pgm=/board2/saleList.jsp";
 	</script>
 	<% } else {%>
 	<script type="text/javascript">

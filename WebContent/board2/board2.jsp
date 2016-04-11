@@ -9,17 +9,17 @@
 %> 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link href="../temp.css" rel="stylesheet" type="text/css">
+
 <h2> 세일정보  </h2>
 <style type="text/css">
 	.m { 
-		width: 170px;
+		width: 250px;
 		height: 200px;	
 	}
-	.td{
+	.t{
 		text-align: center;
-		width : 600px;
-		height: 100px;
+		width : 250px;
+		height: 200px;
 	}
 </style>
 </head>
@@ -28,28 +28,31 @@
 <%
 
 	String s_image = request.getParameter("s_image");
-	
+	String pageNum = request.getParameter("pageNum");
+	if (pageNum == null || pageNum == "") pageNum = "0";
+	int nowPage = Integer.parseInt(pageNum);
 	SaleDao sd = SaleDao.getInstance();
 	List<Sale> list = sd.selectList(1,50);
 	
 %>
-<pre>
-<table>
+
+<table align="center" border="1">
 <tr>
 <%
 int i=0 ;
 int j=0;
 	for(Sale sal : list){	
 	
-		if(j<=23){
-			if(i<=4){
+		if(j<=20){
+			if(i<=3){
 			
 %>
-		<td class = "td">
-			<img class ="m" src="../board2/imageFile/<%=sal.getS_image()%>">
-			<%=sal.getS_brand() %>
-			<%=sal.getS_term() %>
-			<font color="gray"><%=sal.getS_salename()%> </font>
+		<td class = "t">
+			<a href="../main/temp.jsp?pgm=/board2/saleView.jsp?s_num=<%=sal.getS_num()%>&pageNum=<%=nowPage%>">
+			<img class ="m" src="../board2/imageFile/<%=sal.getS_image()%>"></a><p>
+			<%=sal.getS_brand() %><p>
+			<%=sal.getS_term() %><p>
+			<font color="gray"><%=sal.getS_salename()%></font><p>
 		</td>
 <%	j++;
 		}
@@ -57,13 +60,14 @@ int j=0;
 			j++;
 			i=0;%>
 	 	</tr>
-			<tr>
-			<td class = "td">
-			<img class = "m" src="../board2/imageFile/<%=sal.getS_image()%>" >
-			<%=sal.getS_brand() %>
-			<%=sal.getS_term() %>
-			<font color="gray"><%=sal.getS_salename()%> </font>
-		</td>
+		<tr>
+			<td class = "t">
+				<a href="../main/temp.jsp?pgm=/board2/saleView.jsp?s_num=<%=sal.getS_num()%>&pageNum=<%=nowPage%>">
+				<img class = "m" src="../board2/imageFile/<%=sal.getS_image()%>"></a><p>
+				<%=sal.getS_brand() %><p>
+				<%=sal.getS_term() %><p>
+				<font color="gray"><%=sal.getS_salename()%> </font><p>
+			</td>
 <%
 		}
 		i++;
@@ -72,8 +76,8 @@ int j=0;
 }
 
 %>
-</tr>
+		</tr>
 </table>
-</pre>
+
 </body>
 </html>

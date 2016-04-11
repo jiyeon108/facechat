@@ -30,7 +30,7 @@ public class SaleDao {
 	        int result = 0;
 	        PreparedStatement pstmt = null;      
 	        try {  conn = getConnection();
-	            String str ="insert into sale values (sale_seq.nextval,?,?,?,?,?,?)";
+	            String str ="insert into sale values (sale_seq.nextval,?,?,?,?,?,?,?)";
 	            pstmt = conn.prepareStatement(str);
 	           // pstmt.setInt   (1, sale.getS_num());
 	            pstmt.setString(1, sale.getS_brand());
@@ -39,7 +39,7 @@ public class SaleDao {
 	            pstmt.setString(4, sale.getS_term());
 	            pstmt.setString(5, sale.getS_image());
 	            pstmt.setInt   (6, sale.getCount());
-	            
+	            pstmt.setString(7, sale.getS_link());
 			    result = pstmt.executeUpdate();
 	            
 	        } catch(Exception e) { System.out.println(e.getMessage());
@@ -97,7 +97,7 @@ public class SaleDao {
 	                     sale.setS_store(rs.getString("s_store"));
 	                     sale.setS_term(rs.getString("s_term"));
 	                     sale.setCount(rs.getInt("count"));
-	                    
+	                     sale.setS_link(rs.getString("s_link"));
 	                     slist.add(sale);
 				    }while(rs.next());
 				}
@@ -157,7 +157,8 @@ public class SaleDao {
 	                    sale.setS_store   (rs.getString("S_store"));
 	                    sale.setS_term    (rs.getString("S_term"));
 	                    sale.setS_image   (rs.getString("S_image"));
-	                    sale.setCount	   (rs.getInt("Count"));  
+	                    sale.setCount	  (rs.getInt   ("Count")); 
+	                    sale.setS_link	  (rs.getString("s_link"));
 	                     saleList[i]=sale;
 	                     i++;
 				    }while(rs.next());
@@ -188,6 +189,7 @@ public class SaleDao {
                     sale.setS_term    (rs.getString("S_term"));
                     sale.setS_image   (rs.getString("S_image"));
                     sale.setCount	   (rs.getInt("Count"));  
+                    sale.setS_link	  (rs.getString("s_link"));
 				}
 	        } catch(Exception e) { System.out.println(e.getMessage());
 	        } finally {
@@ -206,9 +208,9 @@ public class SaleDao {
 		        int result = 0;        
 		        try {
 		        	conn = getConnection();            
-		            sql = "update sale set s_brand=?,s_salename=?,s_store=?,s_term=?,s_image=?, count=? where s_num=?";
+		            sql = "update sale set s_brand=?,s_salename=?,s_store=?,s_term=?,s_image=?, count=?, s_link=? where s_num=?";
 		            
-		            sql1 = "update sale set s_brand=?,s_salename=?,s_store=?,s_term=?,count=? where s_num=?"; 
+		            sql1 = "update sale set s_brand=?,s_salename=?,s_store=?,s_term=?,count=?, s_link=? where s_num=?"; 
 		            if (sale.getS_image()==null) {
 		            	pstmt = conn.prepareStatement(sql1);
 		    			pstmt.setInt(6, s_num);
@@ -222,7 +224,7 @@ public class SaleDao {
 		            pstmt.setString(3, sale.getS_store());
 		            pstmt.setString(4, sale.getS_term());
 		            pstmt.setInt	(5, sale.getCount());
-	
+		            pstmt.setString(6, sale.getS_link());
 		            
 		            result = pstmt.executeUpdate();
 		            
@@ -252,7 +254,7 @@ public class SaleDao {
 	        }
 	        return result;
 	    }
-	    public Sale select(int s_num) throws SQLException{
+	    public Sale select(int s_num){
 			Connection conn=null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
@@ -272,15 +274,17 @@ public class SaleDao {
 					sale.setS_term		(rs.getString("s_term"));				
 					sale.setS_image		(rs.getString("s_image"));
 					sale.setCount 		(rs.getInt("count"));
-					
+					sale.setS_link	    (rs.getString("s_link"));
 					
 				}
 				
 			}catch(Exception e){System.out.println(e.getMessage());
 			}finally {
-				if (rs !=null) rs.close();
-				if (pstmt !=null) pstmt.close();
-				if (conn !=null) conn.close();
+				try{
+					if (rs !=null) rs.close();
+					if (pstmt !=null) pstmt.close();
+					if (conn !=null) conn.close();
+				}catch(Exception e){}
 			}
 			return sale;
 		}
@@ -308,7 +312,7 @@ public class SaleDao {
 	                        sale.setS_store   (rs.getString("S_store"));
 	                        sale.setS_term    (rs.getString("S_term"));
 	                        sale.setS_image   (rs.getString("S_image"));
-	                                      
+	                        sale.setS_link	  (rs.getString("s_link"));              
 	                        list.add(sale);
 	                        
 	                }

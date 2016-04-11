@@ -99,3 +99,5 @@ create table board (
 	del_yn char(1) default 'n',
 	image varchar2(30) default 'nothing.jpg'
 );
+
+alter table sale add(s_link varchar2(100));
