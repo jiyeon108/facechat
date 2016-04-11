@@ -17,7 +17,7 @@ public class Board_1 {
 	private String bo_image;   //사진
 	private int bo_readcount;    //조회수
 	private int bo_likecount;    //좋아요수
-	private Timestamp reg_date; //작성일
+	private Date reg_date; //작성일
 	private String id;
 	
 	public String getId() {
@@ -110,10 +110,10 @@ public class Board_1 {
 	public void setBo_likecount(int bo_likecount) {
 		this.bo_likecount = bo_likecount;
 	}
-	public Timestamp getReg_date() {
+	public Date getReg_date() {
 		return reg_date;
 	}
-	public void setReg_date(Timestamp reg_date) {
+	public void setReg_date(Date reg_date) {
 		this.reg_date = reg_date;
 	}
 

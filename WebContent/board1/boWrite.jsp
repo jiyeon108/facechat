@@ -1,8 +1,10 @@
+<%@page import="java.sql.Date"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8" import="exboard.*" %>
 <%@ page import="java.sql.*,com.oreilly.servlet.MultipartRequest"%>
 <%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@ page import="java.util.*,java.io.*, java.sql.*"%> 
+<%@ include file="boLoginChk.jsp" %>
 
 <% String path = request.getContextPath(); %>
 
@@ -38,8 +40,9 @@
 	String bo_cons = imageUp.getParameter("bo_cons"); 
 	String bo_reco = imageUp.getParameter("bo_reco");  
 	String bo_image = imageUp.getParameter("bo_image"); 
-	String bo_grade = imageUp.getParameter("bo_grade"); 
-
+	String bo_grade = imageUp.getParameter("bo_grade");
+	
+	
 	bo1.setBo_writer(bo_writer);
 	bo1.setBo_password(bo_password);
 	bo1.setBo_brand(bo_brand);
@@ -51,19 +54,18 @@
 	bo1.setBo_reco(bo_reco);
 	bo1.setBo_image(bo_image);
 	bo1.setBo_grade(bo_grade);
-	bo1.setReg_date(new Timestamp(System.currentTimeMillis()));
+
 	
- 	
 	BoardDao_1 boardProcess = BoardDao_1.getInstance();
 	int result = boardProcess.insert(bo1);
 	if (result > 0) {	
-		response.sendRedirect("../board1/board1.jsp");
+		response.sendRedirect("../main/temp.jsp?pgm=/board1/board1.jsp");
 		
 		
 	} else { %>
 
 		 <script type="text/javascript">			
-		 	alert("데이터 입력중에 에러가 발생했습니다. 메세지 확인하세요");
-			location.href ='../board1/boWriteForm.jsp';
+		 	alert("데이터 입력중에 에러가 발생했습니다.");
+			location.href ="../main/temp.jsp?pgm=/board1/boWriteForm.jsp";
 		</script>
 <%  }  %>
