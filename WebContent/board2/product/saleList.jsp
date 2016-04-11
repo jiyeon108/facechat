@@ -10,7 +10,6 @@
 	String path = request.getContextPath();
 %>
 <title>세일등록상황</title>
-<link href="style.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 	body {
 		text-align: center;
@@ -41,64 +40,50 @@
 			
 		</tr>
 <%
-	int rowPerPage   = 10;
-	int pagePerBlock = 10;
-	String pageNum   =request.getParameter("pageNum");
-	if(pageNum==null || pageNum.equals("null")||pageNum.equals(" ")) pageNum = "1";
-	int nowPage   = Integer.parseInt(pageNum);			
-	SaleDao sd    = SaleDao.getInstance();
-	int total     = sd.selectTotal();
-	int totalPage = (int)Math.ceil((double)total/rowPerPage);
-	int startRow  = (nowPage -1) * rowPerPage +1;
-	int endRow    = startRow +rowPerPage -1;
-	int totalBlk  = (int)Math.ceil((double)totalPage/pagePerBlock);
-	int startPage =(nowPage -1)/10*10 +1;
-	int endPage   = startPage+pagePerBlock -1;
-	if(endPage > totalPage) endPage = totalPage;
-	total = total - startRow +1; 
-	List<Sale> list = sd.selectList(startRow, endRow);
-	if(list !=null){ 
-		for(Sale sal :list){ %>
-			<tr><td><%=sal.getS_num() %></td>
-				<td><%=sal.getS_brand()%></td>
-				<td><%=sal.getS_salename()%></td>
-				<td><%=sal.getS_store()%></td>
-				<td><%=sal.getS_term()%></td>
-				<td><%=sal.getS_image() %></td>
-				<td>
-         		<a href="<%=path%>/main/temp.jsp?pgm=/board2/product/saleUpdateForm.jsp?s_num=<%=sal.getS_num() %>&s_name=<%=sal.getS_brand()%>">수정</a></td>
-      			<td>
-      		  	 <a href="<%=path%>/main/temp.jsp?pgm=/board2/product/saleDeleteForm.jsp?s_num=<%=sal.getS_num() %>&s_name=<%=sal.getS_brand()%>">삭제</a></td>
-				
-			</tr>
+int rowPerPage = 10;
+int pagePerBlock = 10; 
+String pageNum = request.getParameter("pageNum");
+if (pageNum == null || pageNum == "") pageNum = "1";
+int nowPage = Integer.parseInt(pageNum);	
+SaleDao sd = SaleDao.getInstance();
+int total = sd.selectTotal();
+int totalPage = (int)Math.ceil((double)total/rowPerPage);
+int startRow = (nowPage - 1) * rowPerPage * 1; //시작번호
+int endRow = startRow + rowPerPage -1; //끝번호
+int startPage =(nowPage - 1)/10*10+1;
+int endPage = startPage +pagePerBlock -1;
+if(endPage > totalPage) endPage = totalPage; //페이지를 블록에 맞게
+total = total - startRow +1;
+List<Sale> list = sd.selectList(startRow,endRow);
+if (list != null) {
+	for (Sale sal : list) {%>
+<tr><td><%=total-- %></td>
+	<td><%=sal.getS_brand() %></td>
+	<td><%=sal.getS_salename() %></td>
+	<td><%=sal.getS_store()%></td>
+	<td><%=sal.getS_term()%></td>
+	<td><%=sal.getS_image() %></td>
+	<td>
+       <a href="<%=path %>/main/temp.jsp?pgm=/board2/product/saleUpdateForm.jsp?s_num=<%=sal.getS_num() %>&s_name=<%=sal.getS_brand()%>">수정</a></td>
+    <td>
+      <a href="<%=path %>/main/temp.jsp?pgm=/board2/product/saleDeleteForm.jsp?s_num=<%=sal.getS_num() %>&s_name=<%=sal.getS_brand()%>">삭제</a></td>
+</tr>
+<% 		}
+} else { %>
+	<tr><td colspan="7">데이터가 없습니다.</td></tr>
+<%  }%>	
+</table>				
+<div align="center">
+<% if(startPage > pagePerBlock) {	%>
+<a href="../main/temp.jsp?pgm=/board2/product/saleList.jsp?pageNum=<%=startPage - pagePerBlock %>">이전</a>
+<% } %>
+<% for (int i = startPage; i<=endPage; i++) { %>
+<a href="../main/temp.jsp?pgm=/board2/product/saleList.jsp?pageNum=<%=i %>">[<%=i %>]</a>
+<%} 
+if(totalPage > endPage) {	%> 
+<a href="../main/temp.jsp?pgm=/board2/product/saleList.jsp?pageNum=<%=startPage + pagePerBlock %>">다음</a>
+<%} %>
 
-<%		 		}}else {%>
-		<tr><td colspan="7">데이터가 없습니다.</td></tr>
-	<%} %>
-</table>	
-<div align="center"> 
-
-<%  for(int i =startPage; i<=endPage; i++){%>	
-	<a href ="../product/salelist.jsp?pageNum=<%=i%>">[<%=i %>]</a>
-<% }
-	if(totalPage > endPage) { %>
-		<a href ="../product/salelist.jsp?pageNum=<%=startPage + pagePerBlock%>">다음</a>
-
-<% } 
-
-	if(startPage>pagePerBlock) { %>
-		<a href ="../product/salelist.jsp?pageNum=<%=startPage - pagePerBlock%>">이전</a>
-<% 		
-		
-} %>
-<br>
-</div>
-<div align="right"> 
-	
-<%-- 		
-
-	<input type ="button"  value="수정" onclick="location.href='<%=path%>/main/temp.jsp?pgm=/board2/product/saleUpdateForm.jsp'">
-	<input type ="button" value="삭제" onclick="location.href='<%=path%>/main/temp.jsp?pgm=/board2/product/saleDeleteForm.jsp'"> --%>
 </div>		
 </body>
 </html>

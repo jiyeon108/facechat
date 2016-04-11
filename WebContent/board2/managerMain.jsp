@@ -34,15 +34,15 @@
 	<table height="60" width="100%" border="1" cellspacing="0">
 		<tr>
 			<td width="30%"><a href="../main/temp.jsp?pgm=/board1/board1.jsp">리뷰존</a></td>
-			<td width="35%"><a href="../main/temp.jsp?pgm=/board2/board2.jsp">브랜드존</a></td>
+			<td width="35%"><a href="../main/temp.jsp?pgm=/board2/board2.jsp">세일존</a></td>
 			<td width="35%"><a href="../main/temp.jsp?pgm=/board3/list.jsp">커뮤니티</a></td>
 		</tr>
 	</table>
 	
 	<br>
 	<table align="center" border="0" width="300"  >
-		<tr>
-			<td align="center">세일관련 작업</td>
+		<tr >
+			<h2 align = "center">관리자 페이지 입니다.</h2>
 		</tr>
 		<tr>
 			<td><a href='../main/temp.jsp?pgm=/board2/product/saleInsertForm.jsp'>상품등록</a></td>

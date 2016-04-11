@@ -1,19 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-<%@ page import = "exboard.*" %>
+<%@page import="exboard.SaleDao"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
 <%
-	request.setCharacterEncoding("utf-8");
-    int s_num = Integer.parseInt(request.getParameter("s_num"));
-    String s_brand = request.getParameter("s_brand");
- 
-    SaleDao saleProcess = SaleDao.getInstance();
-    int result = saleProcess.deleteSale(s_num);
-    if (result > 0 ){ 
-	    response.sendRedirect("saleList.jsp?s_brand="+s_brand);
-    } else {
+	String path = request.getContextPath();
 %>
-	  <script type="text/javascript">
-		  alert("삭제 실패!! 콘솔 메세지를 보세요");
-		  location.href = 'saleDeleteForm.jsp';
-	  </script>
-<%  }   %>
+</head>
+<body>
+<%
+	String pageNum = request.getParameter("pageNum");
+	int s_num = Integer.parseInt(request.getParameter("s_num"));
+	SaleDao sd = SaleDao.getInstance();
+	int result = sd.deleteSale(s_num);
+	if (result > 0) { %>
+	<script type="text/javascript">
+
+	location.href="<%=path %>/main/temp.jsp?pgm=/board2/product/saleList.jsp";
+	</script>
+	<% } else {%>
+	<script type="text/javascript">
+	alert("헐"); history.go(-1);
+	</script>
+
+	<%} %>
+</body>
+</html>

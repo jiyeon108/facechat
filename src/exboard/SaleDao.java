@@ -23,29 +23,7 @@ public class SaleDao {
 	     		conn = ds.getConnection();
 	         return conn;
 	    }    
-	   /* //  관리자 인증 메소드
-	    public int managerCheck(String id, String passwd) {
-			Connection conn = null;   PreparedStatement pstmt = null;
-			ResultSet rs= null;       String dbpasswd="";		int x=-1;        
-			try { conn = getConnection();            
-	            pstmt = conn.prepareStatement(
-	            	"select managerPasswd from manager where managerId=?");
-	            pstmt.setString(1, id);            
-	            rs= pstmt.executeQuery();
-				if(rs.next()){
-					dbpasswd= rs.getString("managerPasswd"); 
-					if(dbpasswd.equals(passwd))		x= 1; //인증 성공
-					else			x= 0; //비밀번호 틀림
-				}else				x= -1;//해당 아이디 없음			
-	        } catch(Exception e) {System.out.println(e.getMessage());
-	        } finally {
-				if (rs != null) try { rs.close(); } catch(SQLException ex) {}
-	            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
-	            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
-	        }
-			return x;
-		}
-	    */
+	   
 	    //책 등록 메소드
 	    public int insertSale(Sale sale) {
 	        Connection conn = null;     
@@ -97,7 +75,7 @@ public class SaleDao {
 	        Connection conn = null;    
 	        PreparedStatement pstmt = null;
 	        ResultSet rs = null;        
-	        ArrayList<Sale> saleList=null;  
+	        ArrayList<Sale> slist=null;  
 	        String sql1="select * from sale";
 	        String sql2 = "select * from sale where s_brand = ?";
 	        try { conn = getConnection();           
@@ -110,7 +88,7 @@ public class SaleDao {
 	        	rs = pstmt.executeQuery();
 
 	            if (rs.next()) {
-	                saleList = new ArrayList<Sale>();
+	                slist = new ArrayList<Sale>();
 	                do{
 	                     Sale sale= new Sale();
 	                     sale.setS_num(rs.getInt("s_num"));
@@ -120,7 +98,7 @@ public class SaleDao {
 	                     sale.setS_term(rs.getString("s_term"));
 	                     sale.setCount(rs.getInt("count"));
 	                    
-	                     saleList.add(sale);
+	                     slist.add(sale);
 				    }while(rs.next());
 				}
 	        } catch(Exception e) {System.out.println(e.getMessage());
@@ -129,7 +107,7 @@ public class SaleDao {
 	            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
 	            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 	        }
-			return saleList;
+			return slist;
 	    }
 		
 		public int selectTotal() throws SQLException{
@@ -307,13 +285,14 @@ public class SaleDao {
 			return sale;
 		}
 	    public ArrayList<Sale> selectList(int startRow, int endRow) {
-	           Connection conn = null;     
+	    	ArrayList<Sale> list = new ArrayList<>();  
+	    	   Connection conn = null;     
 	           PreparedStatement pstmt = null;
 	           ResultSet rs = null;        
-	           ArrayList<Sale> saleList=null;  
-	           String sql = "select * from (select a.* from "
-	               + "(select * from sale order by s_num)a) "
-	               + "where s_num between ? and ?";
+	           
+	           String sql = "select * from (select rowNum rn, a.* from "
+	               + "(select * from sale order by s_num desc )a) "
+	               + "where rn between ? and ?";
 	           try{
 	            conn  = getConnection();
 	            pstmt = conn.prepareStatement(sql);
@@ -321,9 +300,7 @@ public class SaleDao {
 	            pstmt.setInt(2,endRow);
 	            rs = pstmt.executeQuery();
 
-	               if (rs.next()) {
-	                   saleList = new ArrayList<Sale>();
-	                   do{
+	               while(rs.next()){
 	                        Sale sale= new Sale();
 	                        sale.setS_num     (rs.getInt   ("S_num"));
 	                        sale.setS_brand   (rs.getString("S_brand"));
@@ -332,17 +309,19 @@ public class SaleDao {
 	                        sale.setS_term    (rs.getString("S_term"));
 	                        sale.setS_image   (rs.getString("S_image"));
 	                                      
-	                        saleList.add(sale);
+	                        list.add(sale);
 	                        
-	                }while(rs.next());
-	            }
+	                }
+	        
 	           } catch(Exception e) {System.out.println(e.getMessage());
 	           } finally {
 	               if (rs != null) try { rs.close(); } catch(SQLException ex) {}
 	               if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
 	               if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 	           }
-	         return saleList;
+	         return list;
 	    }
+
+	    
 
 	}
