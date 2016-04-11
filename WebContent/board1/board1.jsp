@@ -10,20 +10,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	.m { width: 150;
-		height: 180px;	
+	.m { width: 300px;
+		height: 200px;	
 	}
 </style>
 </head>
 <body>
 <%
+	String pageNum = request.getParameter("pageNum");
+	if(pageNum ==null||pageNum=="")pageNum ="1";
+	int nowPage = Integer.parseInt(pageNum);
 	BoardDao_1 boardProcess = BoardDao_1.getInstance();
-	List<Board_1> list = boardProcess.selectList(1, 12);
+	List<Board_1> list = boardProcess.selectList(1, 50);
 	if(list != null){
 		if(list.size() != 0){
 
 %>
-<table border="1" align="center">
+<table border="1" cellspacing="40" align="center">
 	<h2>★ 포 토 리 뷰 ★</h2>
 
 	<%
@@ -38,8 +41,8 @@
 		
 		
 		<%=list.get(i).getBo_brand()%><p>
-		<a href="temp.jsp?pgm=/board1/list1.jsp">
-			<img class="m" src="../images/<%=list.get(i).getBo_image()%>"></a><p>
+		<a href="../main/temp.jsp?pgm=/board1/boView.jsp?bo_num=<%=list.get(i).getBo_num()%>&pageNum=<%=nowPage%>">
+			<img class="m" src="../board1/images/<%=list.get(i).getBo_image()%>"></a><p>
 		<%=list.get(i).getBo_writer()%><p>
 		<%=list.get(i).getBo_readcount()%>
 		<%=list.get(i).getBo_likecount()%>
