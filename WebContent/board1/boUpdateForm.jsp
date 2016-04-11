@@ -8,13 +8,12 @@
 </head>
 <body>
 <%
-	int num = Integer.parseInt(request.getParameter("num"));
-	String pageNum = request.getParameter("pageNum");
+	int bo_num = Integer.parseInt(request.getParameter("bo_num"));
 	BoardDao_1 bd1 = BoardDao_1.getInstance();
-	Board_1 bo1 = bd1.select(num);
+	Board_1 bo1 = bd1.select(bo_num);
 %>
 <form action="../board1/boUpdate.jsp" name="frm">
-	<table border="1" align="center" width="70%">
+	<table border="1" align="center">
 		<caption><h2>리뷰 수정</h2></caption>
 		<tr>
 			<td>아이디 <input type="text" name="bo_writer" required="required"

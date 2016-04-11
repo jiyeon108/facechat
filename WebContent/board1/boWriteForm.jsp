@@ -22,7 +22,7 @@
 				<h2>포토리뷰 작성</h2>
 			</caption>
 			<tr>
-				<td>아이디 <input type="text" name="bo_writer" required="required" value="<%=mem2.getId() %>">
+				<td>아이디 <input type="text" name="bo_writer" readonly="readonly" value="<%=mem2.getId() %>">
 				</td>
 			</tr>
 			<tr>

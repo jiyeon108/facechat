@@ -81,7 +81,7 @@ public class BoardDao_1 {
 		Connection conn = null;
 		PreparedStatement pstmt = null; 
 		ResultSet rs = null;
-		String sql = "select * from board_1 where bo_writer = ?";
+		String sql = "select * from board_1 where bo_num = ?";
 		Board_1 bo1 = new Board_1();
 		try { conn = getConnection();
 			pstmt  = conn.prepareStatement(sql);
