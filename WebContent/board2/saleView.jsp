@@ -7,8 +7,14 @@
 <title>Insert title here</title>
 <style type="text/css">
 .m {
-	width: 250px;
-	height: 200px;
+	width: 400px;
+	height: 350px;
+}
+.t{
+	border-style: groove;
+	text-align : left;
+	width: 500px;
+	height: 600px;
 }
 </style>
 <%
@@ -24,8 +30,8 @@
 		Sale sale = sd.select(s_num);
 		if (sale != null) {
 	%>
-	<table border="1" align="center" width="100%">
-		<caption>게시판 상세내용</caption>
+	<table align = "center" class="t"  >
+		<caption><h2>게시판 상세내용</h2></caption>
 		<tr>
 			<th>브랜드명</th>
 			<td><%=sale.getS_brand()%></td>

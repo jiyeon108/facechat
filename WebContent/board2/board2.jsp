@@ -20,8 +20,11 @@
 		text-align: center;
 		width : 250px;
 		height: 200px;
+		padding : 40px;
 	}
+	
 </style>
+
 </head>
 <body>
 
@@ -36,7 +39,7 @@
 	
 %>
 
-<table align="center" border="1">
+<table align="center" border="0" class ="ta">
 <tr>
 <%
 int i=0 ;
