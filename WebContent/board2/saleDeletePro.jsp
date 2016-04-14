@@ -11,21 +11,27 @@
 %>
 </head>
 <body>
-<%
-	String pageNum = request.getParameter("pageNum");
-	int s_num = Integer.parseInt(request.getParameter("s_num"));
-	SaleDao sd = SaleDao.getInstance();
-	int result = sd.deleteSale(s_num);
-	if (result > 0) { %>
+	<%
+		String pageNum = request.getParameter("pageNum");
+		int s_num = Integer.parseInt(request.getParameter("s_num"));
+		SaleDao sd = SaleDao.getInstance();
+		int result = sd.deleteSale(s_num);
+		if (result > 0) {
+	%>
 	<script type="text/javascript">
-
-	location.href="<%=path %>/main/temp.jsp?pgm=/board2/saleList.jsp";
+	alert("삭제되었습니다.");
+	location.href="<%=path%>/main/temp.jsp?pgm=/board2/saleList.jsp";
 	</script>
-	<% } else {%>
+	<%
+		} else {
+	%>
 	<script type="text/javascript">
-	alert("헐"); history.go(-1);
+		alert("삭제되지 않았습니다.");
+		history.go(-1);
 	</script>
 
-	<%} %>
+	<%
+		}
+	%>
 </body>
 </html>

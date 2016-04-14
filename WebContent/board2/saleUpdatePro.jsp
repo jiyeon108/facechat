@@ -61,6 +61,6 @@
 %>
 	<script type="text/javascript">
 		alert("수정중에 에러 발생, 콘솔 메세지를 확인하세요");
-		location.href='../saleUpdateForm.jsp';
+		location.href='../board2/saleUpdateForm.jsp';
 	</script>
 <%  }  %>

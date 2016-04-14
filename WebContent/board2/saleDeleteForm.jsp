@@ -25,5 +25,6 @@
 		<p>
 			<input type="button" value="삭제"
 				onclick="location.href='<%=path %>/main/temp.jsp?pgm=/board2/saleDeletePro.jsp?s_num=<%=s_num%>&s_brand=<%=s_brand%>'">
+				
 </body>
 </html>

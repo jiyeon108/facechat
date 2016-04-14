@@ -39,7 +39,7 @@
 	
 %>
 
-<table align="center" border="0" class ="ta">
+<table align="center" border="1" class ="ta" cellspacing="0">
 <tr>
 <%
 int i=0 ;

@@ -12,8 +12,7 @@
 
 </head>
 <body>
-	
-	
+		
 	<div align="center">
 		<h2>책 등록</h2>
 		<form action="../board2/saleInsertPro.jsp" method="post" name="writeform" enctype="multipart/form-data">
@@ -40,7 +39,8 @@
 				</tr>
 				<tr>
 					<td>기간</td>
-					<td><input type="text" size="50" maxlength="50" name="s_term" required="required">
+					<td><laber><input type="date" id="start" name="s_term" required="required"></laber>
+						<laber><input type="date" id="stop" name="s_term" required="required"></laber>
 				</td>
 				</tr>
 				<tr>

@@ -33,8 +33,7 @@ body {
 <body>
 	<div align="center">
 		<h2>수정</h2>
-		<form method="post" name="writeform" action="../board2/saleUpdatePro.jsp"
-			enctype="multipart/form-data">
+		<form action="../board2/saleUpdatePro.jsp" method="post" name="writeform"  enctype="multipart/form-data">
 			<table width="500" border="1">
 				<tr>
 					<td align="right" colspan="2">
@@ -66,8 +65,9 @@ body {
 
 				<tr>
 					<td>기간</td>
-					<td><input type="text" size="50" maxlength="50" name="s_term"
-						value="<%=sale.getS_term()%>"></td>
+					<td><laber><input type="date" id="start" name="s_term" required="required"></laber>
+						<laber><input type="date" id="stop" name="s_term" required="required" value="<%=sale.getS_term()%>"></laber>
+						</td>
 				</tr>
 				<tr>
 					<td>이미지</td>
