@@ -31,7 +31,7 @@ function chk() {
 
 	<h1>My Page</h1>
 	<form action='../member/updatePro.jsp' name="frm" onsubmit="return chk()">
-		<table border="1" width="500" align="center" cellpadding="20">
+		<table border="1" width="500" align="center" cellpadding="20" cellspacing="0">
 			<caption>
 				<h2>정보수정</h2>
 			</caption>

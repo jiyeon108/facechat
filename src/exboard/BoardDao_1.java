@@ -30,7 +30,7 @@ public class BoardDao_1 {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "insert into board_1 values(?,?,?,?,?,?,?,?,?,?,"
-				+ "?,?,0,0,?)";
+				+ "?,?,0,0,sysdate)";
 		String sql1 = "select nvl(max(bo_num),0)+1 from board_1";
 		try{
 			conn  = getConnection();
@@ -51,7 +51,6 @@ public class BoardDao_1 {
 			pstmt.setString(10, bo1.getBo_cons());
 			pstmt.setString(11, bo1.getBo_reco());
 			pstmt.setString(12, bo1.getBo_image());
-			pstmt.setTimestamp(13, bo1.getReg_date());
 			result = pstmt.executeUpdate();
 			
 			
@@ -82,7 +81,7 @@ public class BoardDao_1 {
 		Connection conn = null;
 		PreparedStatement pstmt = null; 
 		ResultSet rs = null;
-		String sql = "select * from board_1 where bo_writer = ?";
+		String sql = "select * from board_1 where bo_num = ?";
 		Board_1 bo1 = new Board_1();
 		try { conn = getConnection();
 			pstmt  = conn.prepareStatement(sql);
@@ -101,7 +100,7 @@ public class BoardDao_1 {
 				bo1.setBo_cons(rs.getString("bo_cons"));
 				bo1.setBo_reco(rs.getString("bo_reco"));
 				bo1.setBo_image(rs.getString("bo_image"));
-				bo1.setReg_date(rs.getTimestamp("Reg_date"));
+				bo1.setReg_date(rs.getDate("reg_date"));
 
 			} 
 		}catch(Exception e) {System.out.println(e.getMessage());
@@ -134,11 +133,41 @@ public class BoardDao_1 {
 		}
 		return total;
 	}
+	// bookId에 해당하는 책의 정보를 얻어내는 메소드로 ,등록된 책을 수정하기 위해 수정폼으로 읽어들기이기 위한 메소드
+		public Board_1 getbo1(int bo_num) {
+	        Connection conn = null;     PreparedStatement pstmt = null;
+	        ResultSet rs = null;        Board_1 bo1=null; 
+	        String sql = "select * from board_1 where bo_num = ?";
+	        try { conn = getConnection();            
+	            pstmt = conn.prepareStatement(sql);
+	            pstmt.setInt(1, bo_num); rs = pstmt.executeQuery();
+	            if (rs.next()) {
+	                bo1 = new Board_1();                
+	                bo1.setBo_writer(rs.getString("bo_writer"));
+	                bo1.setBo_brand(rs.getString("bo_brand"));
+	                bo1.setBo_price(rs.getString("bo_price"));
+	                bo1.setBo_capacity(rs.getString("bo_capacity"));
+	                bo1.setBo_place(rs.getString("bo_place"));
+	                bo1.setBo_grade(rs.getString("bo_grade"));
+	                bo1.setBo_pros(rs.getString("bo_pros"));
+	                bo1.setBo_cons(rs.getString("bo_cons"));
+	                bo1.setBo_reco(rs.getString("bo_reco"));
+	                bo1.setBo_image(rs.getString("bo_image"));
+	                
+				}
+	        } catch(Exception e) { System.out.println(e.getMessage());
+	        } finally {
+	            if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+	            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+	            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+	        }
+			return bo1;
+	    }
 	public int update(Board_1 bo1) throws SQLException {
 		int result = 0; Connection conn = null;
 		PreparedStatement pstmt = null; 
 		String sql="update Board_1 set bo_writer=?,bo_password=?,bo_brand=?,bo_price=?,bo_capacity=?,"
-			+ "bo_place=?,bo_grade=?,bo_pros=?,bo_cons=?,bo_reco=?,bo_img=? where bo_num=?";
+			+ "bo_place=?,bo_grade=?,bo_pros=?,bo_cons=?,bo_reco=?,bo_image=? where bo_num=?";
 		try { conn = getConnection();
 			pstmt  = conn.prepareStatement(sql);
 			pstmt.setString(1, bo1.getBo_writer());
@@ -205,6 +234,8 @@ public class BoardDao_1 {
 				bo1.setBo_cons(rs.getString("bo_cons"));
 				bo1.setBo_reco(rs.getString("bo_reco"));
 				bo1.setBo_image(rs.getString("bo_image"));
+				bo1.setReg_date(rs.getDate("reg_date"));
+				
 				list.add(bo1);
 			}			
 		}catch(Exception e) { System.out.println(e.getMessage());
@@ -248,7 +279,7 @@ public class BoardDao_1 {
     				bo1.setBo_cons(rs.getString("bo_cons"));
     				bo1.setBo_reco(rs.getString("bo_reco"));
     				bo1.setBo_image(rs.getString("bo_image"));
-                	bo1.setReg_date(rs.getTimestamp("reg_date"));
+                	bo1.setReg_date(rs.getDate("reg_date"));
                     
                 	boardList1.add(bo1);
 			    }while(rs.next());

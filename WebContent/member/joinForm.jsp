@@ -8,6 +8,10 @@
 %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	
+	
+	</style>
 <script type="text/javascript">
 	function Chk() {
 		if (frm.password.value != frm.password2.value) {
@@ -26,7 +30,7 @@
 </head>
 <body>
 	<form action="../member/joinPro.jsp" name="frm" onsubmit="return Chk()">
-		<table border="1" width="500" align="center" cellpadding="20">
+		<table border="1" width="500" align="center" cellpadding="20" cellspacing="0" >
 			<caption>
 				<h2>회원가입</h2>
 			</caption>
@@ -40,7 +44,7 @@
 				<td class="left"><input type="password" name="password" required="required"></td>
 			</tr>
 			<tr>
-				<td>암호확인</td>
+				<th>암호확인</th>
 				<td class="left"><input type="password" name="password2" required="required"></td>
 			</tr>
 			<tr>
@@ -53,7 +57,7 @@
 			</tr>
 			<tr>
 				<th>이메일</th>
-				<td class="left"><input type="text" name="email" required="required"></td>
+				<td class="left"><input type="email" name="email" required="required"></td>
 			</tr>
 			<tr>
 				<th>피부타입</th>

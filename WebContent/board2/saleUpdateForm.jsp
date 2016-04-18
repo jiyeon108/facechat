@@ -33,13 +33,12 @@ body {
 <body>
 	<div align="center">
 		<h2>수정</h2>
-		<form method="post" name="writeform" action="../board2/product/saleUpdatePro.jsp"
-			enctype="multipart/form-data">
+		<form action="../board2/saleUpdatePro.jsp" method="post" name="writeform"  enctype="multipart/form-data">
 			<table width="500" border="1">
 				<tr>
 					<td align="right" colspan="2">
 					<a href="../board2/managerMain.jsp"> 관리자 메인으로</a> &nbsp; 
-					<a href="<%=path%>/main/temp.jsp?pgm=/board2/product/saleList.jsp?s_brand=<%=s_brand%>">목록으로</a>
+					<a href="<%=path%>/main/temp.jsp?pgm=/board2/saleList.jsp?s_brand=<%=s_brand%>">목록으로</a>
 					</td>
 				</tr>
 
@@ -66,18 +65,24 @@ body {
 
 				<tr>
 					<td>기간</td>
-					<td><input type="text" size="50" maxlength="50" name="s_term"
-						value="<%=sale.getS_term()%>"></td>
+					<td><laber><input type="date" id="start" name="s_term" required="required"></laber>
+						<laber><input type="date" id="stop" name="s_term" required="required" value="<%=sale.getS_term()%>"></laber>
+						</td>
 				</tr>
 				<tr>
 					<td>이미지</td>
 					<td><input type="file" name="s_image"
 						value="<%=sale.getS_image()%>"><%=sale.getS_image()%></td>
 				</tr>
+				<tr>
+					<td>링크</td>
+					<td><input type="url" size="50" maxlength="50" name="s_link"
+						value="<%=sale.getS_link()%>"></td>
+				</tr>
 
 				<tr>
 					<td colspan=2 align="center">
-					<input type="submit" value="책수정"> 
+					<input type="submit" value="수정"> 
 					<input type="reset" value="다시작성"></td>
 				</tr>
 			</table>

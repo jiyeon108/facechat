@@ -23,36 +23,14 @@ public class SaleDao {
 	     		conn = ds.getConnection();
 	         return conn;
 	    }    
-	   /* //  관리자 인증 메소드
-	    public int managerCheck(String id, String passwd) {
-			Connection conn = null;   PreparedStatement pstmt = null;
-			ResultSet rs= null;       String dbpasswd="";		int x=-1;        
-			try { conn = getConnection();            
-	            pstmt = conn.prepareStatement(
-	            	"select managerPasswd from manager where managerId=?");
-	            pstmt.setString(1, id);            
-	            rs= pstmt.executeQuery();
-				if(rs.next()){
-					dbpasswd= rs.getString("managerPasswd"); 
-					if(dbpasswd.equals(passwd))		x= 1; //인증 성공
-					else			x= 0; //비밀번호 틀림
-				}else				x= -1;//해당 아이디 없음			
-	        } catch(Exception e) {System.out.println(e.getMessage());
-	        } finally {
-				if (rs != null) try { rs.close(); } catch(SQLException ex) {}
-	            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
-	            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
-	        }
-			return x;
-		}
-	    */
+	   
 	    //책 등록 메소드
 	    public int insertSale(Sale sale) {
 	        Connection conn = null;     
 	        int result = 0;
 	        PreparedStatement pstmt = null;      
 	        try {  conn = getConnection();
-	            String str ="insert into sale values (sale_seq.nextval,?,?,?,?,?,?)";
+	            String str ="insert into sale values (sale_seq.nextval,?,?,?,?,?,?,?)";
 	            pstmt = conn.prepareStatement(str);
 	           // pstmt.setInt   (1, sale.getS_num());
 	            pstmt.setString(1, sale.getS_brand());
@@ -61,7 +39,7 @@ public class SaleDao {
 	            pstmt.setString(4, sale.getS_term());
 	            pstmt.setString(5, sale.getS_image());
 	            pstmt.setInt   (6, sale.getCount());
-	            
+	            pstmt.setString(7, sale.getS_link());
 			    result = pstmt.executeUpdate();
 	            
 	        } catch(Exception e) { System.out.println(e.getMessage());
@@ -97,7 +75,7 @@ public class SaleDao {
 	        Connection conn = null;    
 	        PreparedStatement pstmt = null;
 	        ResultSet rs = null;        
-	        ArrayList<Sale> saleList=null;  
+	        ArrayList<Sale> slist=null;  
 	        String sql1="select * from sale";
 	        String sql2 = "select * from sale where s_brand = ?";
 	        try { conn = getConnection();           
@@ -110,7 +88,7 @@ public class SaleDao {
 	        	rs = pstmt.executeQuery();
 
 	            if (rs.next()) {
-	                saleList = new ArrayList<Sale>();
+	                slist = new ArrayList<Sale>();
 	                do{
 	                     Sale sale= new Sale();
 	                     sale.setS_num(rs.getInt("s_num"));
@@ -119,8 +97,8 @@ public class SaleDao {
 	                     sale.setS_store(rs.getString("s_store"));
 	                     sale.setS_term(rs.getString("s_term"));
 	                     sale.setCount(rs.getInt("count"));
-	                    
-	                     saleList.add(sale);
+	                     sale.setS_link(rs.getString("s_link"));
+	                     slist.add(sale);
 				    }while(rs.next());
 				}
 	        } catch(Exception e) {System.out.println(e.getMessage());
@@ -129,7 +107,7 @@ public class SaleDao {
 	            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
 	            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 	        }
-			return saleList;
+			return slist;
 	    }
 		
 		public int selectTotal() throws SQLException{
@@ -179,7 +157,8 @@ public class SaleDao {
 	                    sale.setS_store   (rs.getString("S_store"));
 	                    sale.setS_term    (rs.getString("S_term"));
 	                    sale.setS_image   (rs.getString("S_image"));
-	                    sale.setCount	   (rs.getInt("Count"));  
+	                    sale.setCount	  (rs.getInt   ("Count")); 
+	                    sale.setS_link	  (rs.getString("s_link"));
 	                     saleList[i]=sale;
 	                     i++;
 				    }while(rs.next());
@@ -210,6 +189,7 @@ public class SaleDao {
                     sale.setS_term    (rs.getString("S_term"));
                     sale.setS_image   (rs.getString("S_image"));
                     sale.setCount	   (rs.getInt("Count"));  
+                    sale.setS_link	  (rs.getString("s_link"));
 				}
 	        } catch(Exception e) { System.out.println(e.getMessage());
 	        } finally {
@@ -228,9 +208,9 @@ public class SaleDao {
 		        int result = 0;        
 		        try {
 		        	conn = getConnection();            
-		            sql = "update sale set s_brand=?,s_salename=?,s_store=?,s_term=?,s_image=?, count=? where s_num=?";
+		            sql = "update sale set s_brand=?,s_salename=?,s_store=?,s_term=?,s_image=?, count=?, s_link=? where s_num=?";
 		            
-		            sql1 = "update sale set s_brand=?,s_salename=?,s_store=?,s_term=?,count=? where s_num=?"; 
+		            sql1 = "update sale set s_brand=?,s_salename=?,s_store=?,s_term=?,count=?, s_link=? where s_num=?"; 
 		            if (sale.getS_image()==null) {
 		            	pstmt = conn.prepareStatement(sql1);
 		    			pstmt.setInt(6, s_num);
@@ -244,7 +224,7 @@ public class SaleDao {
 		            pstmt.setString(3, sale.getS_store());
 		            pstmt.setString(4, sale.getS_term());
 		            pstmt.setInt	(5, sale.getCount());
-	
+		            pstmt.setString(6, sale.getS_link());
 		            
 		            result = pstmt.executeUpdate();
 		            
@@ -274,7 +254,7 @@ public class SaleDao {
 	        }
 	        return result;
 	    }
-	    public Sale select(int s_num) throws SQLException{
+	    public Sale select(int s_num){
 			Connection conn=null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
@@ -294,26 +274,29 @@ public class SaleDao {
 					sale.setS_term		(rs.getString("s_term"));				
 					sale.setS_image		(rs.getString("s_image"));
 					sale.setCount 		(rs.getInt("count"));
-					
+					sale.setS_link	    (rs.getString("s_link"));
 					
 				}
 				
 			}catch(Exception e){System.out.println(e.getMessage());
 			}finally {
-				if (rs !=null) rs.close();
-				if (pstmt !=null) pstmt.close();
-				if (conn !=null) conn.close();
+				try{
+					if (rs !=null) rs.close();
+					if (pstmt !=null) pstmt.close();
+					if (conn !=null) conn.close();
+				}catch(Exception e){}
 			}
 			return sale;
 		}
 	    public ArrayList<Sale> selectList(int startRow, int endRow) {
-	           Connection conn = null;     
+	    	ArrayList<Sale> list = new ArrayList<>();  
+	    	   Connection conn = null;     
 	           PreparedStatement pstmt = null;
 	           ResultSet rs = null;        
-	           ArrayList<Sale> saleList=null;  
-	           String sql = "select * from (select a.* from "
-	               + "(select * from sale order by s_num)a) "
-	               + "where s_num between ? and ?";
+	           
+	           String sql = "select * from (select rowNum rn, a.* from "
+	               + "(select * from sale order by s_num desc )a) "
+	               + "where rn between ? and ?";
 	           try{
 	            conn  = getConnection();
 	            pstmt = conn.prepareStatement(sql);
@@ -321,9 +304,7 @@ public class SaleDao {
 	            pstmt.setInt(2,endRow);
 	            rs = pstmt.executeQuery();
 
-	               if (rs.next()) {
-	                   saleList = new ArrayList<Sale>();
-	                   do{
+	               while(rs.next()){
 	                        Sale sale= new Sale();
 	                        sale.setS_num     (rs.getInt   ("S_num"));
 	                        sale.setS_brand   (rs.getString("S_brand"));
@@ -331,18 +312,20 @@ public class SaleDao {
 	                        sale.setS_store   (rs.getString("S_store"));
 	                        sale.setS_term    (rs.getString("S_term"));
 	                        sale.setS_image   (rs.getString("S_image"));
-	                                      
-	                        saleList.add(sale);
+	                        sale.setS_link	  (rs.getString("s_link"));              
+	                        list.add(sale);
 	                        
-	                }while(rs.next());
-	            }
+	                }
+	        
 	           } catch(Exception e) {System.out.println(e.getMessage());
 	           } finally {
 	               if (rs != null) try { rs.close(); } catch(SQLException ex) {}
 	               if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
 	               if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 	           }
-	         return saleList;
+	         return list;
 	    }
+
+	    
 
 	}

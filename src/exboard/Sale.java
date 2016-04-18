@@ -9,7 +9,14 @@ public class Sale {
 	private String s_term; // 세일기간
 	private String s_image ;// 사진
 	private int count; //세일등록된 숫자
+	private String s_link;
 	
+	public String getS_link() {
+		return s_link;
+	}
+	public void setS_link(String s_link) {
+		this.s_link = s_link;
+	}
 	public int getCount() {
 		return count;
 	}

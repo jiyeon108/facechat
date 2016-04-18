@@ -10,49 +10,64 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	.m { width: 150;
-		height: 180px;	
+	.m { width: 300px;
+		height: 200px;	
 	}
 </style>
 </head>
 <body>
 <%
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-	List<Board_1> boardList1 = null;
-	int number = 0;
-	String bo_image = request.getParameter("bo_image");
-	
+	String pageNum = request.getParameter("pageNum");
+	if(pageNum ==null||pageNum=="")pageNum ="1";
+	int nowPage = Integer.parseInt(pageNum);
 	BoardDao_1 boardProcess = BoardDao_1.getInstance();
-	List<Board_1> list = boardProcess.selectList(1, 10);
+	List<Board_1> list = boardProcess.selectList(1, 50);
 	if(list != null){
 		if(list.size() != 0){
 
 %>
-<table border="1">
+<table border="1" cellspacing="40" align="center">
+	<h2>★ 포 토 리 뷰 ★</h2>
+
 	<%
-		for(Board_1 brd1 : list){
+		for(int i = 0; i < list.size();i++) {
+			if( i % 3 == 0){
+	%>
+				<tr>
+	<%
+			}
 	%>	
-	<tr>
 		<td>
-		<%=brd1.getBo_brand()%><p>
-		<img class="m" src="../images/<%=brd1.getBo_image()%>"><p>
-		<%=brd1.getBo_writer()%><p>
-		<%=brd1.getBo_readcount()%>
-		<%=brd1.getBo_likecount()%>
-		<%=brd1.getReg_date()%>
+		
+		
+		<%=list.get(i).getBo_brand()%><p>
+		<a href="../main/temp.jsp?pgm=/board1/boView.jsp?bo_num=<%=list.get(i).getBo_num()%>&pageNum=<%=nowPage%>">
+			<img class="m" src="../board1/images/<%=list.get(i).getBo_image()%>"></a><p>
+		<%=list.get(i).getBo_writer()%><p>
+		<%=list.get(i).getBo_readcount()%>
+		<%=list.get(i).getBo_likecount()%>
+		<%=list.get(i).getReg_date()%>
 		</td>
-	</tr>
+		<%
+		if( i % 3 == 2){
+			%>
+			</tr>
+			<%
+			}
+		%>
+	
 	<%
-			
 		}
 	%>
+		
 </table>
 <%
 		}
 	}
 %>
-	<input type="button" value="글쓰기" 
-		onclick="location.href='<%=path%>/main/temp.jsp?pgm=/board1/boWriteForm.jsp'">
-
+<p>
+	<input type="button" value="글쓰기"
+		onclick="location.href='<%=path%>/main/temp.jsp?pgm=/board1/boMemberChk.jsp'">
+	
 </body>
 </html>
