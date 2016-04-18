@@ -101,3 +101,5 @@ create table board (
 );
 
 alter table sale add(s_link varchar2(100));
+
+alter table board add(comments varchar2(30));
