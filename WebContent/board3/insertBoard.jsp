@@ -11,7 +11,7 @@
 <body>
 <%	BoardDao bd = BoardDao.getInstance();	
 	int ref=0, re_step =0, re_level=0;
-	for(int i = 0; i <= 20; i++) {
+	for(int i = 0; i <= 17; i++) {
 		Board board = new Board();
 		board.setRef(ref); 
 		board.setRe_level(re_level); 

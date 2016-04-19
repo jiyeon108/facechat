@@ -10,7 +10,7 @@
 <%
 	String path = request.getContextPath();
 %>
-<title>책삭제</title>
+<title>게시물 삭제</title>
 	<link href="../style.css" rel="stylesheet" type="text/css">
 	<style type="text/css">
 	body {
@@ -19,7 +19,7 @@
 	</style>
 	</head>
 <body>
-		<h2>책삭제</h2>
+		<h2>게시물 삭제</h2>
 		<a href="<%=path %>/main/temp.jsp?pgm=/board2/managerMain.jsp"> 관리자 메인으로</a> &nbsp;
 		<a href="<%=path %>/main/temp.jsp?pgm=/board2/saleList.jsp?s_brand=<%=s_brand%>">목록으로</a>
 		<p>

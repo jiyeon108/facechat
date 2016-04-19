@@ -14,7 +14,7 @@
 <body>
 		
 	<div align="center">
-		<h2>책 등록</h2>
+		<h2>상품 등록</h2>
 		<form action="../board2/saleInsertPro.jsp" method="post" name="writeform" enctype="multipart/form-data">
 			<table width="500" border="1">
 				<tr>

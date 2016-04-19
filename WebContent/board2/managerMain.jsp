@@ -15,7 +15,7 @@
 	<table border="1" cellspacing="0" width="100%">
 		<tr height="100">
 			<td width="30%">
-					<a href="../board2/managerMain.jsp"><img src="../main/logo.jpg" width="300" height="200"></a>
+					<a href="../board2/managerMain.jsp"><img src="../main/logo.jpg" width="250" height="150"></a>
 			</td>
 			<td width="45%">
 					<input type="text" placeholder="검색" size="30">
