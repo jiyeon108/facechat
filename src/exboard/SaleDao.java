@@ -24,7 +24,7 @@ public class SaleDao {
 	         return conn;
 	    }    
 	   
-	    //책 등록 메소드
+	   
 	    public int insertSale(Sale sale) {
 	        Connection conn = null;     
 	        int result = 0;
@@ -70,7 +70,7 @@ public class SaleDao {
 			return x;
 	    }
 	
-		// 분류별또는 전체등록된 책의 정보를 얻어내는 메소드
+		
 		public ArrayList<Sale> getSales(String s_brand) {
 	        Connection conn = null;    
 	        PreparedStatement pstmt = null;
@@ -200,7 +200,7 @@ public class SaleDao {
 			return sale;
 	    }
 		
-	    // 등록된 책의 정보를 수정시 사용하는 메소드
+	   
 		 public int updateSale(Sale sale, int s_num) {
 		        Connection conn = null;    
 		        PreparedStatement pstmt = null;
@@ -208,16 +208,15 @@ public class SaleDao {
 		        int result = 0;        
 		        try {
 		        	conn = getConnection();            
-		            sql = "update sale set s_brand=?,s_salename=?,s_store=?,s_term=?,s_image=?, count=?, s_link=? where s_num=?";
-		            
-		            sql1 = "update sale set s_brand=?,s_salename=?,s_store=?,s_term=?,count=?, s_link=? where s_num=?"; 
+		            sql = "update sale set s_brand=?,s_salename=?,s_store=?,s_term=?,s_image=?,count=?,s_link=? where s_num=?";
+		            sql1 = "update sale set s_brand=?,s_salename=?,s_store=?,s_term=?,count=?,s_link=? where s_num=?"; 
 		            if (sale.getS_image()==null) {
 		            	pstmt = conn.prepareStatement(sql1);
-		    			pstmt.setInt(6, s_num);
+		    			pstmt.setInt(7, s_num);
 		            } else {
 		            	pstmt = conn.prepareStatement(sql);
 		            	pstmt.setString(5, sale.getS_image());
-		    			pstmt.setInt(7, s_num);
+		    			pstmt.setInt(8, s_num);
 		            }            
 		            pstmt.setString(1, sale.getS_brand());
 		            pstmt.setString(2, sale.getS_salename());
@@ -236,7 +235,7 @@ public class SaleDao {
 		        return result;
 		    }
 	     
-	    // bookId에 해당하는 책의 정보를 삭제시 사용하는 메소드
+	   
 	    public int deleteSale(int s_num)   {
 	        Connection conn = null;  
 	        PreparedStatement pstmt = null;

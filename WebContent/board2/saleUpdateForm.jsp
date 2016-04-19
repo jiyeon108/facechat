@@ -66,7 +66,7 @@ body {
 				<tr>
 					<td>기간</td>
 					<td><laber><input type="date" id="start" name="s_term" required="required"></laber>
-						<laber><input type="date" id="stop" name="s_term" required="required" value="<%=sale.getS_term()%>"></laber>
+						<laber><input type="date" id="stop" name="s_term" required="required" ></laber>
 						</td>
 				</tr>
 				<tr>
