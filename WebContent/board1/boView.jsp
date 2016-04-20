@@ -23,9 +23,10 @@
 		Board_1 bo1 = bd1.select(bo_num);
 		if (bo1 != null) {
 	%>
-	<table border="1" align="center">
+	<p>
+	<table border="1" align="center" width="40%">
 		<tr>
-			<td><%=bo1.getId()%><br>
+			<td><%=bo1.getBo_writer()%><br>
 				작성일<br><%=bo1.getReg_date()%></td>
 			<td>별점<br><%=bo1.getBo_brand()%></td>
 		</tr>
@@ -61,7 +62,8 @@
 	<%
 		}
 	%>
-	<button onclick="location.href='<%=path%>/main/temp.jsp?pgm=/board1/boUpdateForm.jsp' ">수정</button>
+	<p>
+	<button onclick="location.href='<%=path%>/main/temp.jsp?pgm=/board1/boUpdateForm.jsp'">수정</button>
 	<button onclick="location.href='<%=path%>/main/temp.jsp?pgm=/board1/boDeleteForm.jsp' ">삭제</button>
 </body>
 </html>

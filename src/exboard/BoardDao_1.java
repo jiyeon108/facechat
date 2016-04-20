@@ -32,6 +32,7 @@ public class BoardDao_1 {
 		String sql = "insert into board_1 values(?,?,?,?,?,?,?,?,?,?,"
 				+ "?,?,0,0,sysdate)";
 		String sql1 = "select nvl(max(bo_num),0)+1 from board_1";
+
 		try{
 			conn  = getConnection();
 			pstmt = conn.prepareStatement(sql1);
@@ -133,27 +134,67 @@ public class BoardDao_1 {
 		}
 		return total;
 	}
+/*	public Board_1[] getboard_1(String bo_brand, int bo_num) {
+        Connection conn = null;  
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        Board_1 boList[]=null;       
+        int i = 0;        
+        try { conn = getConnection();           
+            pstmt = conn.prepareStatement(
+               "select * from (select * from sale where bo_brand = ? ) where bo_num <= ?");
+            pstmt.setString(1, bo_brand);
+            pstmt.setInt(2, bo_num);          
+        	rs = pstmt.executeQuery();
+            if (rs.next()) {
+                boList = new Board_1[bo_num];
+                do{ Board_1 bo1= new Board_1();
+                	bo1.setBo_num     (rs.getInt   ("bo_num"));
+                	bo1.setBo_brand   (rs.getString("bo_brand"));
+                	bo1.setBo_image(rs.getString("bo_image"));
+                	bo1.setBo_price   (rs.getString("bo_price"));
+                	bo1.setBo_capacity    (rs.getString("bo_capacity"));
+                	bo1.setBo_place   (rs.getString("bo_place"));
+                	bo1.setBo_pros	  (rs.getString   ("bo_pros")); 
+                	bo1.setBo_cons	  (rs.getString("bo_cons"));
+                	bo1.setBo_reco	  (rs.getString("bo_reco"));
+                	bo1.setBo_grade	  (rs.getString("bo_grade"));
+                     boList[i]=bo1;
+                     i++;
+			    }while(rs.next());
+			}
+        } catch(Exception e) { System.out.println(e.getMessage());  } finally {
+            if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+        }
+		return boList; 
+    }*/
 	// bookId에 해당하는 책의 정보를 얻어내는 메소드로 ,등록된 책을 수정하기 위해 수정폼으로 읽어들기이기 위한 메소드
 		public Board_1 getbo1(int bo_num) {
-	        Connection conn = null;     PreparedStatement pstmt = null;
-	        ResultSet rs = null;        Board_1 bo1=null; 
+	        Connection conn = null;     
+	        PreparedStatement pstmt = null;
+	        ResultSet rs = null;        
+	        Board_1 bo1=null; 
 	        String sql = "select * from board_1 where bo_num = ?";
 	        try { conn = getConnection();            
 	            pstmt = conn.prepareStatement(sql);
-	            pstmt.setInt(1, bo_num); rs = pstmt.executeQuery();
+	            pstmt.setInt(1, bo_num); 
+	            rs = pstmt.executeQuery();
 	            if (rs.next()) {
 	                bo1 = new Board_1();                
 	                bo1.setBo_writer(rs.getString("bo_writer"));
+	                bo1.setBo_password(rs.getString("bo_password"));
 	                bo1.setBo_brand(rs.getString("bo_brand"));
+	                bo1.setBo_image(rs.getString("bo_image"));
 	                bo1.setBo_price(rs.getString("bo_price"));
 	                bo1.setBo_capacity(rs.getString("bo_capacity"));
 	                bo1.setBo_place(rs.getString("bo_place"));
-	                bo1.setBo_grade(rs.getString("bo_grade"));
 	                bo1.setBo_pros(rs.getString("bo_pros"));
 	                bo1.setBo_cons(rs.getString("bo_cons"));
 	                bo1.setBo_reco(rs.getString("bo_reco"));
-	                bo1.setBo_image(rs.getString("bo_image"));
-	                
+	                bo1.setBo_grade(rs.getString("bo_grade"));
+	               
 				}
 	        } catch(Exception e) { System.out.println(e.getMessage());
 	        } finally {
@@ -166,21 +207,21 @@ public class BoardDao_1 {
 	public int update(Board_1 bo1) throws SQLException {
 		int result = 0; Connection conn = null;
 		PreparedStatement pstmt = null; 
-		String sql="update Board_1 set bo_writer=?,bo_password=?,bo_brand=?,bo_price=?,bo_capacity=?,"
-			+ "bo_place=?,bo_grade=?,bo_pros=?,bo_cons=?,bo_reco=?,bo_image=? where bo_num=?";
+		String sql="update board_1 set bo_writer=?,bo_password=?,bo_brand=?, bo_image=?,bo_price=?,bo_capacity=?,"
+			+ "bo_place=?,bo_grade=?,bo_pros=?,bo_cons=?,bo_reco=? where bo_num=?";
 		try { conn = getConnection();
 			pstmt  = conn.prepareStatement(sql);
 			pstmt.setString(1, bo1.getBo_writer());
 			pstmt.setString(2, bo1.getBo_password());
 			pstmt.setString(3, bo1.getBo_brand());
-			pstmt.setString(4, bo1.getBo_price());
-			pstmt.setString(5, bo1.getBo_capacity());
-			pstmt.setString(6, bo1.getBo_place());
-			pstmt.setString(7, bo1.getBo_grade());
-			pstmt.setString(8, bo1.getBo_pros());
-			pstmt.setString(9, bo1.getBo_cons());
-			pstmt.setString(10,bo1.getBo_reco());
-			pstmt.setString(11, bo1.getBo_image());
+			pstmt.setString(4, bo1.getBo_image());
+			pstmt.setString(5, bo1.getBo_price());
+			pstmt.setString(6, bo1.getBo_capacity());
+			pstmt.setString(7, bo1.getBo_place());
+			pstmt.setString(8, bo1.getBo_grade());
+			pstmt.setString(9, bo1.getBo_pros());
+			pstmt.setString(10, bo1.getBo_cons());
+			pstmt.setString(11,bo1.getBo_reco());
 			pstmt.setInt(12, bo1.getBo_num());
 			result = pstmt.executeUpdate();
 		}catch(Exception e) {System.out.println(e.getMessage());

@@ -21,7 +21,7 @@
 	if(pageNum ==null||pageNum=="")pageNum ="1";
 	int nowPage = Integer.parseInt(pageNum);
 	BoardDao_1 boardProcess = BoardDao_1.getInstance();
-	List<Board_1> list = boardProcess.selectList(1, 50);
+	List<Board_1> list = boardProcess.selectList(1, 15);
 	if(list != null){
 		if(list.size() != 0){
 

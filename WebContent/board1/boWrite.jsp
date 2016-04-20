@@ -39,9 +39,7 @@
 	String bo_pros = imageUp.getParameter("bo_pros");  
 	String bo_cons = imageUp.getParameter("bo_cons"); 
 	String bo_reco = imageUp.getParameter("bo_reco");  
-/* 	String bo_image = imageUp.getParameter("bo_image");  */
 	String bo_grade = imageUp.getParameter("bo_grade");
-	
 	
 	bo1.setBo_writer(bo_writer);
 	bo1.setBo_password(bo_password);
