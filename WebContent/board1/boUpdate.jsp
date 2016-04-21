@@ -12,16 +12,15 @@
 <body>
 <%
 	request.setCharacterEncoding("utf-8");
-	int ref=0, re_step =0, re_level=0;
 %>
-<jsp:useBean id="bo1" class="exboard.Board_1"></jsp:useBean>
+<jsp:useBean id="board_1" class="exboard.Board_1"></jsp:useBean>
 <jsp:setProperty property="*" name="board_1"/>
 <%String pageNum = request.getParameter("pageNum");
-	BoardDao_1 bd = BoardDao_1.getInstance();
-	int result = bd.update(bo1);
+	BoardDao_1 bd1 = BoardDao_1.getInstance();
+	int result = bd1.update(board_1);
 	if(result > 0) {%>
 	<script type="text/javascript">
-	alert("수정이 완료되엇습니다"); 
+	alert("수정이 완료되었습니다"); 
 	location.href="<%=path %>/main/temp.jsp?pgm=/board1/board1.jsp?=pageNum=<%=pageNum%>"; 
 	</script>
 	<%} else { %>

@@ -63,7 +63,7 @@
 		}
 	%>
 	<p>
-	<button onclick="location.href='<%=path%>/main/temp.jsp?pgm=/board1/boUpdateForm.jsp'">수정</button>
-	<button onclick="location.href='<%=path%>/main/temp.jsp?pgm=/board1/boDeleteForm.jsp' ">삭제</button>
+	<button onclick="location.href='<%=path%>/main/temp.jsp?pgm=/board1/boUpdateForm.jsp?bo_num=<%=bo_num%>&pageNum=<%=pageNum%>'">수정</button>
+	<button onclick="location.href='<%=path%>/main/temp.jsp?pgm=/board1/boDeleteForm.jsp?bo_num=<%=bo_num%>&pageNum=<%=pageNum%>' ">삭제</button>
 </body>
 </html>

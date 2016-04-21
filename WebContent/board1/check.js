@@ -17,7 +17,7 @@ function check(){
 function delcheck() {
 	if(frm.bo_password.value!==frm.dbPass.value) { 
 		alert("암호가 틀립니다."); 
-		frm.password.focus(); 
+		frm.bo_password.focus(); 
 		return false;
 	}
 	return true;

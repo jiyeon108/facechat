@@ -9,7 +9,10 @@
 </head>
 <body>
 <%
-	int bo_num = Integer.parseInt(request.getParameter("bo_num"));
+	int bo_num=0;
+	if(request.getParameter("bo_num") !=null) {
+		bo_num = Integer.parseInt(request.getParameter("bo_num"));
+	}
 	String pageNum = request.getParameter("pageNum");
 	BoardDao_1 bd1 = BoardDao_1.getInstance();
 	Board_1 bo1 = bd1.select(bo_num);
@@ -17,10 +20,11 @@
 %>
 <form action="../board1/boDelete.jsp" name = "frm" onsubmit="return delcheck()">
 	<input type="hidden" name="pageNum" value="<%=pageNum %>">
-	<input type="hidden" name = "num" value="<%=bo_num %>">
+	<input type="hidden" name = "bo_num" value="<%=bo_num %>">
 	<input type = "hidden" name = "dbPass" value="<%=dbPass %>">
-	암호 : <input type="password" name = "password" required="required">
-	<input type="submit" value = "확인">
+	<p>암호 : <input type="password" name = "bo_password" required="required">
+	<P><input type="submit" value = "확인">
 	</form>
+
 </body>
 </html>

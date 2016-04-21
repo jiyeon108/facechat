@@ -46,8 +46,8 @@
 			</td>
 		</tr>
 		<tr>
-			<td>가격 <input type="text" size="7" name="bo_price" required="required"> 
-				용량 <input type="text" size="7" name="bo_capacity" required="required"> 
+			<td>가격 <input type="text" size="7" name="bo_price" required="required">원 
+				용량 <input type="text" size="7" name="bo_capacity" required="required">g  
 				구매장소 <input type="text" size="7" name="bo_place" required="required">
 			</td>
 		</tr>

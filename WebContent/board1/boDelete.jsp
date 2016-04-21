@@ -12,9 +12,9 @@
 <body>
 <%
 	String pageNum = request.getParameter("pageNum");
-	int num = Integer.parseInt(request.getParameter("num"));
+	int bo_num = Integer.parseInt(request.getParameter("bo_num"));
 	BoardDao_1 bd1 = BoardDao_1.getInstance();
-	int result = bd1.delete(num);
+	int result = bd1.delete(bo_num);
 	if (result > 0) { %>
 	<script type="text/javascript">
 	alert("삭제가 완료되었습니다");
