@@ -53,8 +53,8 @@
 					</tr>
 				</tbody>
 			</table>
-			<div
-				style="background: rgb(237, 191, 209); width: 100%; height: 160px; float: center;">
+			<p>
+			<div style="background: rgb(237, 191, 209); width: 100%; height: 160px; float: center;">
 				<table class="ta">
 					<tbody>
 						<tr>
@@ -67,8 +67,8 @@
 					</tbody>
 				</table>
 			</div>
-			<div
-				style="background: rgb(232, 212, 221); width: 100%; height: 160px; float: center;">
+			<p>
+			<div style="background: rgb(232, 212, 221); width: 100%; height: 160px; float: center;">
 				<table class="ta">
 					<tbody>
 						<tr>
@@ -81,6 +81,7 @@
 					</tbody>
 				</table>
 			</div>
+			<p>
 		</tr>
 		</tbody>
 	</table>
