@@ -5,6 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	th { height:35px; font-size:20px; font-family: 빅;}
+	td { height: 20px;}
+</style>
 <%
 	String path = request.getContextPath();
 %>
@@ -15,8 +19,9 @@ function memberCheck() {
 </script> -->
 </head>
 <body>
-<table border = "1" align="center" width="70%"> 
-	<caption>게시판</caption>
+<table border = "1" align="center" width="70%" cellspacing="0"  >
+	<p> 
+	<h2  align="center"  style="font-family : 빅; font-size: 30px;">커 뮤 니 티</h2>
 	<tr><th>번호</th><th>제목</th><th>작성자</th><th>조회수</th><th>작성일</th></tr>
 <%
 	int rowPerPage = 10;
@@ -59,7 +64,7 @@ function memberCheck() {
 	<a href="../main/temp.jsp?pgm=/board3/list.jsp?pageNum=<%=startPage - pagePerBlock %>">이전</a>
 	<% } %>
 <% for (int i = startPage; i<=endPage; i++) { %>
-	<a href="../main/temp.jsp?pgm=/board3/list.jsp?pageNum=<%=i %>">[<%=i %>]</a>
+	<a href="../main/temp.jsp?pgm=/board3/list.jsp?pageNum=<%=i %>">  [<%=i %>]</a>
 	<%} 
 	if(totalPage > endPage) {	%> 
 	<a href="../main/temp.jsp?pgm=/board3/list.jsp?pageNum=<%=startPage + pagePerBlock %>">다음</a>

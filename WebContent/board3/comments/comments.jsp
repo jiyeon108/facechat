@@ -11,6 +11,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	caption { font-size : 25px; font-family: 빅;}
+</style>
 </head>
 <body>
 <% 
@@ -33,7 +36,7 @@
 <input type = "hidden" name="re_step" value="<%=c_ref_step %>">
 <input type = "hidden" name="re_level" value="<%=c_ref_level %>">
 <input type="hidden" name="pagenum" value="<%=pageNum %>" />
-<table border="1" align="center" width="70%"><caption>답글</caption>
+<table border="1" align="center" width="70%" cellspacing="0"><caption>답글</caption>
 	<tr><th>작성자</th><td><input type="text" name="writer"  value = "<%=mem2.getId() %>" 
 	readonly="readonly"></td></tr>
 	<tr><th>내용</th><td><textarea rows="5" cols="50" name="c_content" required="required" ></textarea></td></tr>

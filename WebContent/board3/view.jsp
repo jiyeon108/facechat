@@ -11,7 +11,11 @@
 <%
 	String path= request.getContextPath();
 %>
-<link rel="stylesheet" type="text/css" href="comm.css">
+<style type="text/css">
+	th {font-size: 20px; font-family: 빅;}
+	caption { font-size : 30px; font-family: 빅;}
+</style>
+<!-- <link rel="stylesheet" type="text/css" href="comm.css"> -->
 </head><body>
 <%	int num = Integer.parseInt(request.getParameter("num"));
 	String pageNum= request.getParameter("pageNum");
@@ -19,7 +23,7 @@
 	bd.updateHit(num);
 	Board board = bd.select(num); 
 	if (board != null) {  	%>
-<table border="1" align="center" width="70%"><caption>게시판 상세내용</caption>
+<table border="1" align="center" width="70%" cellspacing="0"><caption>게시판 상세내용</caption>
 	<tr><th>제목</th><td><%=board.getSubject()%></td></tr>
 	<tr><th>작성자</th><td><%=board.getWriter()%></td></tr>
 	<tr><th>조회수</th><td><%=board.getReadcount()%></td></tr>

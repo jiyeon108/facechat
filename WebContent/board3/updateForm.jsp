@@ -10,7 +10,11 @@
 		frm
 	}
 </script>
-<link rel="stylesheet" type="text/css" href="comm.css">
+<style type="text/css">
+	th {font-size: 20px; font-family: 빅;}
+	caption{font-size: 25px; font-family: 빅;}
+</style>
+<!-- <link rel="stylesheet" type="text/css" href="comm.css"> -->
 </head>
 <body>
 	<%
@@ -23,7 +27,7 @@
 	<form action="../board3/updatePro.jsp" name="frm" onsubmit="return chk()">
 		<input type="hidden" name="num" value="<%=board.getNum()%>">
 		<input type="hidden" name="pageNum" value="<%=pageNum%>">
-		<table border="1" align="center" width="70%">
+		<table border="1" align="center" width="70%" size= 20px; cellspacing="0">
 			<caption>게시판 수정</caption>
 			<tr>
 				<th>제목</th>
