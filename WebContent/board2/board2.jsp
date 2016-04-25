@@ -10,7 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-<h2 align="center" style="color: rgb(255, 102, 153); font-size: 35px;"> 세 일 정 보  </h2>
+<h2 align="center" style="font-size: 30px;">세 일 정 보</h2>
 <style type="text/css">
 	.m { 
 		width: 250px;
@@ -21,8 +21,9 @@
 		width : 250px;
 		height: 200px;
 		padding : 40px;
+		border: 1px soild #bcbcbc;
 	}
-	
+
 </style>
 
 </head>
@@ -39,7 +40,7 @@
 	
 %>
 
-<table align="center" border="1" class ="ta" cellspacing="0">
+<table align="center" border="0" cellspacing="0">
 <tr>
 <%
 int i=0 ;

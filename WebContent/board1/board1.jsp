@@ -13,6 +13,9 @@
 	.m { width: 300px;
 		height: 200px;	
 	}
+	.t {
+		border: 1px solid #bcbcbc;
+	}
 </style>
 </head>
 <body>
@@ -26,8 +29,8 @@
 		if(list.size() != 0){
 
 %>
-<table border="1" cellspacing="40" align="center">
-	<h2>★ 포 토 리 뷰 ★</h2>
+<table border="0" cellspacing="40" align="center">
+	<h2 align="center" style="font-family:빅; font-size :30px;"> 포 토 리 뷰  </h2>
 
 	<%
 		for(int i = 0; i < list.size();i++) {
@@ -37,7 +40,7 @@
 	<%
 			}
 	%>	
-		<td>
+		<td class="t">
 		
 		
 		<%=list.get(i).getBo_brand()%><p>

@@ -15,15 +15,15 @@
 	text-align : center;
 	width: 600px;
 	height: 700px;
-	font-size: 28px;
-	font-family: 타이포_달꽃; 
-	color : #DB8383;
+	font-size: 25px;
+	font-family: 빅 ; 
+	
 
 }
 .con{
-	font-size: 25px;
-	font-family: 타이포_달꽃; 
-	color : #DB8383;
+	font-size: 20px;
+	font-family: 빅; 
+	
 }
 </style>
 <%
@@ -39,8 +39,9 @@
 		Sale sale = sd.select(s_num);
 		if (sale != null) {
 	%>
+	<h2 align="center" style="font-size: 30px;">게시판 상세내용</h2>
 	<table align = "center" class="t" >
-		<caption><h2>게시판 상세내용</h2></caption>
+		
 		<tr>
 			<th>브랜드명</th>
 			<td class= "con"><%=sale.getS_brand()%></td>
@@ -78,8 +79,7 @@
 		<button onclick="location.href='<%=path%>/main/temp.jsp?pgm=/board2/board2.jsp?=pageNum=<%=pageNum%>' ">게시판
 			목록</button>
 
-
-	</div>
+	</div><p>
 
 </body>
 </html>

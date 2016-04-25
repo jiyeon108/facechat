@@ -24,9 +24,9 @@
 	
 %>
 <form action="../board1/boUpdate.jsp" name="frm" >
-	<table border="1" align="center">
+	<table border="1" cellspacing="0" align="center" width="80">
 	<input type="hidden" name="bo_num" value="<%=bo_num%>">
-		<caption><h2>리뷰 수정</h2></caption>
+		<h2 align="center" style="font-family:빅; font-size :30px;"> 포 토 리 뷰 수 정 </h2>
 		<tr>
 			<td>아이디 <input type="text" name="bo_writer" readonly="readonly" value="<%=bo1.getBo_writer() %>">
 			</td>

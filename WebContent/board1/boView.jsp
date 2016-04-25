@@ -24,7 +24,7 @@
 		if (bo1 != null) {
 	%>
 	<p>
-	<table border="1" align="center" width="40%">
+	<table border="1" cellspacing="0" align="center" width="40%">
 		<tr>
 			<td><%=bo1.getBo_writer()%><br>
 				작성일<br><%=bo1.getReg_date()%></td>
@@ -38,9 +38,9 @@
 			<td colspan="2"><%=bo1.getBo_brand()%></td>
 		</tr>
 		<tr>
-			<td colspan="2">가격<%=bo1.getBo_price()%>
-				용량<%=bo1.getBo_capacity()%>
-				구매장소<%=bo1.getBo_place()%></td>
+			<td colspan="2">가격<%=bo1.getBo_price()%> 원 &nbsp;&nbsp;&nbsp;
+				 용량<%=bo1.getBo_capacity()%> g &nbsp;&nbsp;&nbsp;
+				 구매장소<%=bo1.getBo_place()%> &nbsp;&nbsp;&nbsp;</td>
 		</tr>
 		<tr>
 			<td colspan="2">장점<br><%=bo1.getBo_pros()%></td>
