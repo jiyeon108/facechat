@@ -10,7 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-<h2> 세일정보  </h2>
+<h2 align="center" style="color: rgb(255, 102, 153); font-size: 35px;"> 세 일 정 보  </h2>
 <style type="text/css">
 	.m { 
 		width: 250px;
@@ -47,7 +47,7 @@ int j=0;
 	for(Sale sal : list){	
 	
 		if(j<=20){
-			if(i<=3){
+			if(i<3){
 			
 %>
 		<td class = "t">

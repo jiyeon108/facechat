@@ -12,9 +12,18 @@
 }
 .t{
 	border-style: groove;
-	text-align : left;
-	width: 500px;
-	height: 600px;
+	text-align : center;
+	width: 600px;
+	height: 700px;
+	font-size: 28px;
+	font-family: 타이포_달꽃; 
+	color : #DB8383;
+
+}
+.con{
+	font-size: 25px;
+	font-family: 타이포_달꽃; 
+	color : #DB8383;
 }
 </style>
 <%
@@ -30,27 +39,27 @@
 		Sale sale = sd.select(s_num);
 		if (sale != null) {
 	%>
-	<table align = "center" class="t"  >
+	<table align = "center" class="t" >
 		<caption><h2>게시판 상세내용</h2></caption>
 		<tr>
 			<th>브랜드명</th>
-			<td><%=sale.getS_brand()%></td>
+			<td class= "con"><%=sale.getS_brand()%></td>
 		</tr>
 		<tr>
 			<th>세일명</th>
-			<td><%=sale.getS_salename()%></td>
+			<td class= "con"><%=sale.getS_salename()%></td>
 		</tr>
 		<tr>
 			<th>세일매장</th>
-			<td><%=sale.getS_store()%></td>
+			<td class= "con"><%=sale.getS_store()%></td>
 		</tr>
 		<tr>
 			<th>세일기간</th>
-			<td><%=sale.getS_term()%></td>
+			<td class= "con"><%=sale.getS_term()%></td>
 		</tr>
 		<tr>
 			<th>이미지</th>
-			<td><img class="m" src="../board2/imageFile/<%=sale.getS_image()%>"></td>
+			<td class= "con"><img class="m" src="../board2/imageFile/<%=sale.getS_image()%>"></td>
 		</tr>
 		<tr>
 			<th>링크</th>

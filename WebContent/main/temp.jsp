@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
 <link href="../temp.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="../board1/check.js"></script>
 </head>
@@ -18,13 +19,11 @@
 			pgm = "home.jsp";
 	%>
 
-	<table>
+	<table height="60" width="100%" border="0" cellspacing="0">
 		<tr>
-			<td colspan="2" height="50"><jsp:include page="top.jsp" /></td>
+			<td colspan="2" height="80"><jsp:include page="top.jsp" /></td>
 		</tr>
-		<tr>
-			<td width="20%"><jsp:include page="menu.jsp" /></td>
-		</tr>
+		
 		<tr>
 			<td><jsp:include page="<%=pgm%>" /></td>
 		</tr>

@@ -44,6 +44,7 @@
   String s_salename   = imageUp.getParameter("s_salename");
   String s_store 	  = imageUp.getParameter("s_store");
   String s_term 	  = imageUp.getParameter("s_term");
+  String count		  = imageUp.getParameter("count");
   String s_link		  = imageUp.getParameter("s_link");
   
   
@@ -51,6 +52,8 @@
   sale.setS_salename(s_salename);
   sale.setS_store(s_store);
   sale.setS_term(s_term);
+  sale.setS_image(filename);
+  sale.setCount(Integer.parseInt(count));
   sale.setS_link(s_link);
   
   SaleDao sd = SaleDao.getInstance();
