@@ -6,7 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	th { font-size:20px; font-family: 빅;}
+	th { height:35px; font-size:20px; font-family: 빅;}
+	td { height: 20px;}
 </style>
 <%
 	String path = request.getContextPath();
@@ -18,7 +19,7 @@ function memberCheck() {
 </script> -->
 </head>
 <body>
-<table border = "1" align="center" width="70%" cellspacing="0">
+<table border = "1" align="center" width="70%" cellspacing="0"  >
 	<p> 
 	<h2  align="center"  style="font-family : 빅; font-size: 30px;">커 뮤 니 티</h2>
 	<tr><th>번호</th><th>제목</th><th>작성자</th><th>조회수</th><th>작성일</th></tr>
