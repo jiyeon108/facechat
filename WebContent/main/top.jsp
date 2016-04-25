@@ -34,13 +34,16 @@ function join() {
 				<td align="center" width="25%">
 					<a href="temp.jsp?pgm=home.jsp"><img src="logo.jpg" width="300" height="150"></a>
 			</td>
-				<td width="20%"><a class="me" href="temp.jsp?pgm=/board1/board1.jsp">리뷰존</a></td>
-				<td width="20%"><a class="me" href="temp.jsp?pgm=/board2/board2.jsp">세일존</a></td>
-				<td width="20%"><a class="me" href="temp.jsp?pgm=/board3/list.jsp">커뮤니티</a></td>
-			<td width="15%">
-						아 이 디: <input type="text" name="id" size="15" maxlength="12" placeholder="아이디">
+				<td width="20%">
+					<a class="me" href="temp.jsp?pgm=/board1/board1.jsp"><img src="rev.JPG" width = "140" height= "70"></a></td>
+				<td width="20%">
+					<a class="me" href="temp.jsp?pgm=/board2/board2.jsp"><img src="sale.JPG" width = "140" height= "70"></a></td>
+				<td width="20%">
+					<a class="me" href="temp.jsp?pgm=/board3/list.jsp"><img src="com.JPG" width = "140" height= "70"></a></td>
+				<td width="15%">
+						아 이 디 <input type="text" name="id" size="15" maxlength="12" placeholder="아이디">
 						<p>
-						패스워드: <input type="password" name="password" size="15"	maxlength="12" placeholder="패스워드">
+						패스워드 <input type="password" name="password" size="15"	maxlength="12" placeholder="패스워드">
 						<p>
 						<input type="submit" value="로그인" name="login">
 						<input type="button" value="회원가입" onclick="join()">
@@ -48,6 +51,9 @@ function join() {
 				</pre>
 			</tr>
 		</table>
+		<p>
+		<hr>
+		<hr>
 	<%
 		} else {
 	%>
@@ -56,10 +62,13 @@ function join() {
 			<td align="center" width="25%">
 					<a href="temp.jsp?pgm=home.jsp"><img src="logo.jpg" width="300" height="150"></a>
 			</td>
-				<td width="20%"><a href="temp.jsp?pgm=/board1/board1.jsp">리뷰존</a></td>
-				<td width="20%"><a href="temp.jsp?pgm=/board2/board2.jsp">세일존</a></td>
-				<td width="20%"><a href="temp.jsp?pgm=/board3/list.jsp">커뮤니티</a></td>
-			<td width="15%">
+				<td width="20%">
+					<a class="me" href="temp.jsp?pgm=/board1/board1.jsp"><img src="rev.JPG" width = "140" height= "70"></a></td>
+				<td width="20%">
+					<a class="me" href="temp.jsp?pgm=/board2/board2.jsp"><img src="sale.JPG" width = "140" height= "70"></a></td>
+				<td width="20%">
+					<a class="me" href="temp.jsp?pgm=/board3/list.jsp"><img src="com.JPG" width = "140" height= "70"></a></td>
+				<td width="15%">
 				<b><%=session.getAttribute("id")%>님 환영합니다.</b>
 				<p>
 				<input type="button" value="마이페이지"

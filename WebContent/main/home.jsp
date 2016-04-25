@@ -5,7 +5,16 @@
 <head>
 
 <title>페이수다&amp;너의 얼굴에 투자하는 모든 것을 알려줘</title>
+<style type="text/css">
+span{
 
+	line-height:150%;
+	padding-top: 0px;  
+	font-size: 15px; 
+	float: left;
+
+}
+</style>
 <script language="javascript" src="../js/jquery.js"></script>
 <script language="javascript" src="../js/jquery.magnify-1.0.2.js"></script>
 
@@ -20,7 +29,7 @@
 							<tbody>
 								<tr>
 									<td height="" colspan="2"><a
-										style="color: rgb(255, 102, 153); font-size: 35px;"
+										style="color: rgb(255, 102, 153); font-size: 25px; line-height:130%; text-decoration: none"
 										 href="../main/temp.jsp?pgm=/board1/board1.jsp">
 											엔오에이치제이 센텔라스킨카밍젤</a></td>
 								</tr>
@@ -30,8 +39,8 @@
 											style="border: 1px solid rgb(204, 204, 204); border-image: none;"
 											src="http://www.beautytoc.co.kr/image/up/exp_thumb/218.jpg"
 											border="0"></td>
-									<td width="70%" height="100" align="left" valign="middle">
-									<span style="line-height: 150%; padding-top: 0px;  font-size: 25px; float: left;">
+									<td width="70%" height="70" align="left" valign="middle">
+									<span>
 									식물성뷰신성분이 	광채와 수분코팅 효과를 주는 대용량 진정 수분크림</span></td>
 								</tr>
 							</tbody>
@@ -44,7 +53,7 @@
 							<tbody>
 								<tr>
 									<td height="40"  valign="top" colspan="2">
-									<a style="color: rgb(255, 102, 153); font-size: 35px;"
+									<a style="color: rgb(255, 102, 153); font-size: 25px; line-height: 180%;"
 										href="../main/temp.jsp?pgm=/board1/board1.jsp">
 											엔오에이치제이 아쿠아 수딩젤150ml</a></td>
 								</tr>
@@ -55,7 +64,7 @@
 											src="http://www.beautytoc.co.kr/image/up/exp_thumb/219.jpg"
 											border="0"></td>
 									<td width="70%" height="100" align="left" valign="middle">
-									<span style="line-height: 150%; padding-top: 0px;  font-size: 25px; float: left;">
+									<span>
 									풍부한 수분을 머금은 젤타입의 수분젤!티트리,알로에,바오밥열매,병풀 추출물함유.</span></td>
 								</tr>
 							</tbody>
@@ -69,7 +78,7 @@
 							<tbody>
 								<tr>
 									<td height="40" align="center" valign="middle" colspan="2"><a
-										style="color: rgb(255, 102, 153); font-size: 35px;"
+										style="color: rgb(255, 102, 153); font-size: 25px;"
 										href="../main/temp.jsp?pgm=/board1/board1.jsp">
 											피움 투인원 화이트 바디 퍼펙트</a></td>
 								</tr>
@@ -79,7 +88,7 @@
 											src="http://www.beautytoc.co.kr/image/up/exp_thumb/218.jpg"
 											border="0"></td>
 									<td width="70%" height="100" align="left" valign="middle">
-									<span style="line-height: 150%; padding-top: 0px;  font-size: 25px; float: left;">
+									<span >
 									3초 마법! 완벽한	하얀 피부 즉각 화이트닝. 미백 기능성 화장품 </span></td>
 								
 								</tr>
