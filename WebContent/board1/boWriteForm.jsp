@@ -27,7 +27,7 @@
 	<table align="center">
 	<input type="hidden" name="bo_num" value="<%=bo_num%>">
 		<caption>
-			<h2>포토리뷰 작성</h2>
+			<h2 align="center" style="font-family:빅; font-size :30px;"> 포 토 리 뷰 작 성 </h2>
 		</caption>
 		<tr>
 			<td>아이디 <input type="text" name="bo_writer" readonly="readonly" value="<%=mem2.getId() %>">
