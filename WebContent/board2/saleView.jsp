@@ -15,13 +15,13 @@
 	text-align : center;
 	width: 600px;
 	height: 700px;
-	font-size: 25px;
+	font-size: 20px;
 	font-family: 빅 ; 
 	
 
 }
 .con{
-	font-size: 20px;
+	font-size: 15px;
 	font-family: 빅; 
 	
 }
@@ -39,7 +39,7 @@
 		Sale sale = sd.select(s_num);
 		if (sale != null) {
 	%>
-	<h2 align="center" style="font-size: 30px;">게시판 상세내용</h2>
+	<h2 align="center" style="font-size: 20px;">게시판 상세내용</h2>
 	<table align = "center" class="t" >
 		
 		<tr>
@@ -64,7 +64,7 @@
 		</tr>
 		<tr>
 			<th>링크</th>
-			<td><a href="<%=sale.getS_link()%>">
+			<td class= "con"><a href="<%=sale.getS_link()%>">
 					<%=sale.getS_brand() %></a></td>
 		</tr>
 	</table>
@@ -75,11 +75,12 @@
 	<%
 		}
 	%>
+	<p>
 	<div align="center">
-		<button onclick="location.href='<%=path%>/main/temp.jsp?pgm=/board2/board2.jsp?=pageNum=<%=pageNum%>' ">게시판
+		<button onclick="location.href='<%=path%>/main/temp.jsp?pgm=/board2/board2.jsp?=pageNum=<%=pageNum%>' " style="width: 100px; height: 30px; font-size: 15px;">게시판
 			목록</button>
 
-	</div><p>
+	</div>
 
 </body>
 </html>

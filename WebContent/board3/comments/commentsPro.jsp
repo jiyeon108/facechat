@@ -19,7 +19,7 @@
 	String ip = request.getRemoteAddr(); // 글쓴이의 주소를 요청
 	CommentDao cd = CommentDao.getInstance();
 	int result = cd.insert(comment);
-	if(result > 0) response.sendRedirect("../main/temp.jsp?pgm=/board3/list.jsp?pageNum"+pageNum);
+	if(result>0) response.sendRedirect("../main/temp.jsp?pgm=/board3/view.jsp?pageNum"+pageNum);
 	else { %>
 <script type="text/javascript">
 	alert("잘해 !");  history.go(-1);

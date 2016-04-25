@@ -55,7 +55,7 @@ public class CommentDao {
 	      PreparedStatement pstmt = null;
 	      ResultSet rs = null;
 	      String sql  = "insert into com values(?,?,sysdate,?,?,?)";
-	      String sql1 = "select nvl(max(num),0)+1 from com";
+	      String sql1 = "select nvl(max(c_num),0)+1 from com";
 	      String sql2 = "update com set c_ref_step = c_ref_step+1 where c_ref = ? and c_ref_step>?";
 	      try{
 	         conn  = getConnection();
