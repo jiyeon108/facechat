@@ -103,3 +103,14 @@ create table board (
 alter table sale add(s_link varchar2(100));
 
 alter table board add(comments varchar2(30));
+
+create table com(
+		c_num number primary key, --key
+		c_content varchar2(400) not null,
+		c_reg_date date not null,
+		c_ref number not null,
+		c_ref_step number not null, -- ref내의 순서
+		c_ref_level number not null -- 들여쓰기
+		   );
+		   
+select * from com;

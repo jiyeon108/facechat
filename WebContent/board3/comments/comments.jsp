@@ -30,7 +30,7 @@
 	}
 	
 		%>
-<form action="commentsPro.jsp" method="post">
+<form action="${pageContext.request.contextPath}/board3/comments/commentsPro.jsp" method="post">
 <input type = "hidden" name="c_num" value="<%=c_num %>">
 <input type = "hidden" name="c_ref" value="<%=c_ref %>">
 <input type = "hidden" name="re_step" value="<%=c_ref_step %>">
