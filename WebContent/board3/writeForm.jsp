@@ -13,7 +13,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type = "text/css" href="comm.css">
+<style type="text/css">
+	th {font-size: 20px; font-family: 빅;}
+</style>
+<!-- <link rel="stylesheet" type = "text/css" href="comm.css"> -->
 </head>
 <body>
 <% 
@@ -36,7 +39,7 @@
 <input type = "hidden" name="re_step" value="<%=re_step %>">
 <input type = "hidden" name="re_level" value="<%=re_level %>">
 <input type= "hidden" name = "pageNum" value ="<%=pageNum %>">
-<table border="1" align="center" width="70%"><caption>게시판 작성</caption>
+<table border="1" align="center" width="70%" cellspacing="0"><caption size : 10px;>게시판 작성</caption>
 	<tr><th>제목</th><td><input type="text" name="subject" 
 	required="required" autofocus="autofocus"></td></tr>
 	<tr><th>작성자</th><td><input type="text" name="writer"  value = "<%=mem2.getId() %>" 
